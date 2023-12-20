@@ -44,7 +44,23 @@ function App() {
       // Scroll to the Greeting section
       const greetingSection = document.getElementById('greeting-section');
       if (greetingSection) {
-        greetingSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        const start = window.scrollY;
+        const end = greetingSection.offsetTop;
+        const distance = end - start;
+        const duration = 1000; // Adjust the duration (in milliseconds)
+        const startTime = performance.now();
+  
+        const step = (time: any) => {
+          const elapsed = time - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          window.scrollTo(0, start + distance * progress);
+        
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        };
+        
+        requestAnimationFrame(step);
       }
     }, 500);
   };
