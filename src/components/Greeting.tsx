@@ -49,9 +49,9 @@ const Greeting = ({ config }: GreetingProps) => {
       <Layout>
         <Title>We're Getting Married</Title>
         <SubTitle>
-          {config.bride.name}, born in winter,
+          {config.bride.name}, born in February,
           <br />
-          {config.groom.name}, born in autumn,
+          {config.groom.name}, born in September,
           <br />
           <br />
           Two people with different interests and values
@@ -66,9 +66,8 @@ const Greeting = ({ config }: GreetingProps) => {
           Please illuminate the place of our energetic start.
           <br />
           <br />
-          Son of {config.groom.fatherName} and {config.groom.motherName}, {config.groom.name}
+          Scroll down to see the love story of {config.groom.name} & {config.bride.name}...
           <br />
-          Daughter of {config.bride.fatherName} and {config.bride.motherName}, {config.bride.name}
         </SubTitle>
       </Layout>
     </section>

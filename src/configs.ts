@@ -6,7 +6,8 @@ import GalleryPhoto3 from './resources/Gallery_Photo_3.png';
 import GalleryPhoto4 from './resources/Gallery_Photo_4.png';
 import GalleryPhoto5 from './resources/Gallery_Photo_5.png';
 import GalleryPhoto6 from './resources/Gallery_Photo_6.png';
-
+// @ts-ignore
+import Music from './resources/music.mp3';
 
 const Configs: ConfigsType = {
   url: 'http://localhost:3000',
@@ -15,7 +16,7 @@ const Configs: ConfigsType = {
   weddingDate: 'March 1, 2025',
   weddingLocation: '億家主题宴会厅 - 𝗬𝗶𝗝𝗶𝗮 𝗧𝗵𝗲𝗺𝗲 𝗕𝗮𝗻𝗾𝘂𝗲𝘁 𝗛𝗮𝗹𝗹',
   groom: {
-    name: 'Sui Zer',
+    name: 'Sui Zer 绥泽',
     accountNumber: 'Bank: ***-***-******',
     fatherName: 'Father Name',
     fatherAccountNumber: 'Bank: ***-***-******',
@@ -23,7 +24,7 @@ const Configs: ConfigsType = {
     motherAccountNumber: 'Bank: ***-***-******',
   },
   bride: {
-    name: 'Lycia',
+    name: 'Lycia 丽萱',
     accountNumber: 'Bank: ***-***-******',
     fatherName: 'Father Name',
     fatherAccountNumber: 'Bank: ***-***-******',
@@ -40,6 +41,7 @@ const Configs: ConfigsType = {
     GalleryPhoto5,
     GalleryPhoto6,
   ],
+  music: Music,
 };
 
 export type ConfigsType = {
@@ -53,6 +55,7 @@ export type ConfigsType = {
   titleImage: string;
   locationMapImage: string;
   galleryImages: string[];
+  music: string;
 };
 
 type Person = {

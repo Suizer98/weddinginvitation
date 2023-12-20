@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     // Start playing music when showDetails becomes true
     if (showDetails) {
-      const audio = new Audio('./resources/music.mp3');
+      const audio = new Audio(Configs.music)
       audio.loop = true;
   
       // Play the audio
@@ -37,28 +37,18 @@ function App() {
     }
   }, [showDetails]);
 
+  const footerStyles: React.CSSProperties = {
+    background: '#D7CCC8',
+    opacity: 1,
+    textAlign: 'center',
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
+  };
+
   return (
     <main style={{ height: '100%' }}>
-      <TitleLayout config={Configs} />
-      {!showDetails && (
-        <div>
-        <Footer
-          style={{
-            background: '#D7CCC8',
-            opacity: 1,
-            textAlign: 'center',
-            position: 'fixed',
-            bottom: 0,
-            width: '100%',
-          }}
-        >
-          <Button onClick={handleShowDetails} type="primary">
-            Show Details
-          </Button>
-        </Footer>
-        </div>
-      )}
-
+      <TitleLayout config={Configs} showDetails={showDetails} />
       {showDetails && (
         <>
           <Greeting config={Configs} />
@@ -66,20 +56,17 @@ function App() {
           <Location config={Configs} />
           <CongratulatoryMoney config={Configs} />
           <Share config={Configs} />
-          <Footer
-            style={{
-              background: '#D7CCC8',
-              opacity: 0.6,
-              textAlign: 'center',
-              position: 'fixed',
-              bottom: 0,
-              width: '100%',
-            }}
-          >
-            Sui Zer & Lycia's Wedding
-          </Footer>
         </>
       )}
+        <div>
+        <Footer style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}>
+          {showDetails ? "Sui Zer & Lycia's Wedding" : (
+            <Button onClick={handleShowDetails} type="primary">
+              Show Details
+            </Button>
+          )}
+        </Footer>
+        </div>
     </main>
   );
 }

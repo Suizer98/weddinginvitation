@@ -36,6 +36,7 @@ const SubTitleLayout = styled('p', {
 
 const ImageLayout = styled('div', {
   width: '100%',
+  height: '75%',
   background: '#DADADA',
   bottom: '-5px',
   textAlign: 'center',
@@ -48,22 +49,25 @@ const Image = styled('img', {
 
 type TitleProps = {
   config: ConfigsType;
+  showDetails: boolean;
 };
 
-const Title = ({ config }: TitleProps) => {
+const Title = ({ config, showDetails }: TitleProps) => {
   const { width, height } = useWindowSize();
 
   return (
     <>
+      {showDetails && (
       <Confetti
         width={width}
         height={height}
-        numberOfPieces={300}
-        gravity={0.2}
+        numberOfPieces={100}
+        gravity={0.1}
         colors={['#FFCDD2', '#F8BBD0', '#D1C4E9']}
-        recycle={false}
+        recycle={true}
         style={{ position: 'fixed' }}
-      />
+      />)
+      }
       <Section>
         <Layout>
           <SubTitleLayout>WEDDING INVITATION</SubTitleLayout>
