@@ -12,23 +12,20 @@ const { Footer } = Layout;
 
 function App() {
   const [showDetails, setShowDetails] = useState(false);
-
-  const handleShowDetails = () => {
-    setShowDetails(true);
-  }
+  const [buttonVisible, setButtonVisible] = useState(true);
 
   useEffect(() => {
     // Start playing music when showDetails becomes true
     if (showDetails) {
-      const audio = new Audio(Configs.music)
+      const audio = new Audio(Configs.music);
       audio.loop = true;
-  
+
       // Play the audio
       audio.play().catch((error) => {
         // Handle errors, e.g., autoplay is prevented
         console.error('Error playing music:', error.message);
       });
-  
+
       // Cleanup function
       return () => {
         audio.pause();
@@ -37,6 +34,21 @@ function App() {
     }
   }, [showDetails]);
 
+  const handleShowDetails = () => {
+    setShowDetails(true);
+
+    // Set a timer to hide the button after a delay (e.g., 500ms)
+    setTimeout(() => {
+      setButtonVisible(false);
+      
+      // Scroll to the Greeting section
+      const greetingSection = document.getElementById('greeting-section');
+      if (greetingSection) {
+        greetingSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      }
+    }, 500);
+  };
+
   const footerStyles: React.CSSProperties = {
     background: '#D7CCC8',
     opacity: 1,
@@ -44,6 +56,7 @@ function App() {
     position: 'fixed',
     bottom: 0,
     width: '100%',
+    transition: 'opacity 0.5s', // Apply a transition effect to opacity
   };
 
   return (
@@ -51,22 +64,33 @@ function App() {
       <TitleLayout config={Configs} showDetails={showDetails} />
       {showDetails && (
         <>
-          <Greeting config={Configs} />
+          <Greeting id="greeting-section" config={Configs} />
           <Gallery config={Configs} />
           <Location config={Configs} />
           <CongratulatoryMoney config={Configs} />
           <Share config={Configs} />
         </>
       )}
-        <div>
+      <div>
         <Footer style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}>
-          {showDetails ? "Sui Zer & Lycia's Wedding" : (
-            <Button onClick={handleShowDetails} type="primary">
-              Show Details
-            </Button>
+          {buttonVisible && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Button
+                style={{
+                  background: '#E1306C',
+                  borderColor: '#E1306C',
+                  opacity: showDetails ? 0 : 1, // Adjust opacity based on showDetails
+                }}
+                onClick={handleShowDetails}
+                type="primary"
+              >
+                Reveal Details
+              </Button>
+            </div>
           )}
+          {!buttonVisible && "Sui Zer & Lycia's Wedding"}
         </Footer>
-        </div>
+      </div>
     </main>
   );
 }

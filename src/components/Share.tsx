@@ -116,10 +116,10 @@ const Share = ({ config }: ShareProps) => {
   return (
     <Section>
       <Layout>
-        <Title>Share the Invitation</Title>
+        <Title>Share the Invitation within your love ones</Title>
       </Layout>
       <ButtonGroup>
-        <KakaoTalkShareButton
+        {/* <KakaoTalkShareButton
           style={{ margin: 8 }}
           icon={<MessageFilled />}
           id="sendKakao"
@@ -127,7 +127,7 @@ const Share = ({ config }: ShareProps) => {
           onClick={() => setShareCount(shareCount + 1)}
         >
           Share via KakaoTalk
-        </KakaoTalkShareButton>
+        </KakaoTalkShareButton> */}
         <CopyToClipboard text={config.url}>
           <LinkShareButton
             style={{ margin: 8 }}

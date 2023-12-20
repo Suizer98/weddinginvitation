@@ -62,7 +62,7 @@ const Title = ({ config, showDetails }: TitleProps) => {
         width={width}
         height={height}
         numberOfPieces={100}
-        gravity={0.1}
+        gravity={0.05}
         colors={['#FFCDD2', '#F8BBD0', '#D1C4E9']}
         recycle={true}
         style={{ position: 'fixed' }}

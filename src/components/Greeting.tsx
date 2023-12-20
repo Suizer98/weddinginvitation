@@ -28,15 +28,17 @@ const SubTitle = styled('p', {
 });
 
 type GreetingProps = {
+  id: string
   config: ConfigsType;
 };
 
-const Greeting = ({ config }: GreetingProps) => {
+const Greeting = ({ id, config }: GreetingProps) => {
   const ref = useRef<HTMLSelectElement>(null);
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px');
 
   return (
     <section
+      id={id}
       ref={ref}
       style={{
         height: '100vh',
