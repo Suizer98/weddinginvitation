@@ -117,7 +117,7 @@ const Share = ({ config }: ShareProps) => {
   return (
     <Section>
       <Layout>
-        <Title>Share the Invitation within your love ones</Title>
+        <Title>Share the Invitation with your love ones</Title>
       </Layout>
       <ButtonGroup>
         {/* <KakaoTalkShareButton

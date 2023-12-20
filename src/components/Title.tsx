@@ -25,22 +25,24 @@ const TitleLayout = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
+  fontFamily: 'Pristina',
 });
 
 const SubTitleLayout = styled('p', {
   width: '100%',
-  fontSize: isPortrait ? '1.2em' : '2em',
+  fontSize: isPortrait ? '1.2em' : '2.5em',
   margin: '24px 0',
   fontWeight: '300',
+  fontFamily: 'Pristina',
 });
 
 const ImageLayout = styled('div', {
   width: '100%',
-  height: '75%',
+  height: '50%',
   background: '#DADADA',
-  bottom: '-5px',
+  top: '10px',
   textAlign: 'center',
-  position: 'absolute',
+  position: 'bottom',
 });
 
 const Image = styled('img', {
@@ -70,15 +72,15 @@ const Title = ({ config, showDetails }: TitleProps) => {
       }
       <Section>
         <Layout>
-          <SubTitleLayout>WEDDING INVITATION</SubTitleLayout>
+          <SubTitleLayout>Wedding Invitation</SubTitleLayout>
           <TitleLayout>
             {config.groom.name} &amp; {config.bride.name}
           </TitleLayout>
-          <SubTitleLayout>
+          {/* <SubTitleLayout>
             {config.weddingDate}
             <br />
             {config.weddingLocation}
-          </SubTitleLayout>
+          </SubTitleLayout> */}
         </Layout>
         <ImageLayout>
           <Image src={config.titleImage} alt="Wedding Invitation Title Picutre" />

@@ -43,15 +43,13 @@ const Location = ({ config }: LocationProps) => {
   return (
     <Section ref={ref}>
       <Layout>
-        <Title>Location</Title>
+        <Title>Wedding Avenue</Title>
         <SubTitle>
-          30 Eunhaeng-ro, Yeongdeungpo-gu, Seoul
+          億家主题宴会厅 - Yijia Theme Banquet Hall
           <br />
+          Address:
           <br />
-          Exit from the 3rd exit of the National Assembly Station,
-          <br />
-          and it's a 6-minute walk on foot.
-          <br />
+          8, Jln Adda 2, Adda Heights, 81100 Johor Bahru, Johor
           <br />
           <img
             style={{ width: isPortrait ? '90%' : '60%' }}

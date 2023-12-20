@@ -1,11 +1,12 @@
-import TitleImage from './resources/Title.png';
+import TitleImage from './resources/ring.jpg';
 import LocationMapImage from './resources/LocationMap.png';
-import GalleryPhoto1 from './resources/Gallery_Photo_1.png';
-import GalleryPhoto2 from './resources/Gallery_Photo_2.png';
-import GalleryPhoto3 from './resources/Gallery_Photo_3.png';
-import GalleryPhoto4 from './resources/Gallery_Photo_4.png';
-import GalleryPhoto5 from './resources/Gallery_Photo_5.png';
-import GalleryPhoto6 from './resources/Gallery_Photo_6.png';
+// @ts-ignore
+import GalleryPhoto1 from './resources/photo1.jpg';
+import GalleryPhoto2 from './resources/photo2.jpg';
+import GalleryPhoto3 from './resources/photo3.jpg';
+import GalleryPhoto4 from './resources/photo4.jpg';
+import GalleryPhoto5 from './resources/photo5.jpg';
+import GalleryPhoto6 from './resources/photo6.jpg';
 // @ts-ignore
 import Music from './resources/music.mp3';
 
@@ -14,9 +15,9 @@ const Configs: ConfigsType = {
   kakaoToken: '',
   kakaoImage: '',
   weddingDate: 'March 1, 2025',
-  weddingLocation: '億家主题宴会厅 - 𝗬𝗶𝗝𝗶𝗮 𝗧𝗵𝗲𝗺𝗲 𝗕𝗮𝗻𝗾𝘂𝗲𝘁 𝗛𝗮𝗹𝗹',
+  weddingLocation: '億家主题宴会厅 - Yijia Theme Banquet Hall',
   groom: {
-    name: 'Sui Zer 绥泽',
+    name: 'Sui Zer',
     accountNumber: 'Bank: ***-***-******',
     fatherName: 'Father Name',
     fatherAccountNumber: 'Bank: ***-***-******',
@@ -24,7 +25,7 @@ const Configs: ConfigsType = {
     motherAccountNumber: 'Bank: ***-***-******',
   },
   bride: {
-    name: 'Lycia 丽萱',
+    name: 'Lycia',
     accountNumber: 'Bank: ***-***-******',
     fatherName: 'Father Name',
     fatherAccountNumber: 'Bank: ***-***-******',

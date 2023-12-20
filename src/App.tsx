@@ -83,7 +83,7 @@ function App() {
           <Greeting id="greeting-section" config={Configs} />
           <Gallery config={Configs} />
           <Location config={Configs} />
-          <CongratulatoryMoney config={Configs} />
+          {/* <CongratulatoryMoney config={Configs} /> */}
           <Share config={Configs} />
         </>
       )}
