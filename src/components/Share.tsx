@@ -1,7 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { styled } from '@stitches/react';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { Button, message } from 'antd';
-import { MessageFilled, LinkOutlined } from '@ant-design/icons';
+import { LinkOutlined } from '@ant-design/icons';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { ConfigsType } from '../configs';
 
@@ -38,21 +39,21 @@ const ButtonGroup = styled('div', {
   paddingBottom: isPortrait ? '10%' : '5%',
 });
 
-const KakaoTalkShareButton = styled(Button, {
-  background: '#fee500',
-  borderColor: '#fee500',
-  color: '#181600',
-  '&:hover': {
-    backgroundColor: '#fcf07e !important',
-    borderColor: '#fcf07e !important',
-    color: '#17160b !important',
-  },
-  '&:focus': {
-    backgroundColor: '#fcf07e !important',
-    borderColor: '#fcf07e !important',
-    color: '#17160b !important',
-  },
-});
+// const KakaoTalkShareButton = styled(Button, {
+//   background: '#fee500',
+//   borderColor: '#fee500',
+//   color: '#181600',
+//   '&:hover': {
+//     backgroundColor: '#fcf07e !important',
+//     borderColor: '#fcf07e !important',
+//     color: '#17160b !important',
+//   },
+//   '&:focus': {
+//     backgroundColor: '#fcf07e !important',
+//     borderColor: '#fcf07e !important',
+//     color: '#17160b !important',
+//   },
+// });
 
 const LinkShareButton = styled(Button, {
   background: '#53acee',
@@ -75,43 +76,43 @@ type ShareProps = {
 };
 
 const Share = ({ config }: ShareProps) => {
-  const [shareCount, setShareCount] = useState<number>(0);
+  // const [shareCount, setShareCount] = useState<number>(0);
 
   if (!window.Kakao.isInitialized()) {
     window.Kakao.init(config.kakaoToken);
   }
 
-  useEffect(() => {
-    if (shareCount !== 0) {
-      window.Kakao.Share.createDefaultButton({
-        objectType: 'feed',
-        container: '#sendKakao',
-        content: {
-          title: `Invitation to the Wedding of ${config.groom.name}❤${config.bride.name}`,
-          description: "Please read by pressing the 'Open Invitation' button below 🤵👰",
-          imageUrl: config.kakaoImage,
-          link: {
-            mobileWebUrl: config.url,
-            webUrl: config.url,
-          },
-        },
-        buttons: [
-          {
-            title: 'Open Invitation',
-            link: {
-              mobileWebUrl: config.url,
-              webUrl: config.url,
-            },
-          },
-        ],
-        installTalk: true,
-      });
-      setTimeout(() => {
-        document.getElementById('sendKakao')?.click();
-        message.success('Sharing the invitation via KakaoTalk!');
-      }, 100);
-    }
-  }, [config, shareCount]);
+  // useEffect(() => {
+  //   if (shareCount !== 0) {
+  //     window.Kakao.Share.createDefaultButton({
+  //       objectType: 'feed',
+  //       container: '#sendKakao',
+  //       content: {
+  //         title: `Invitation to the Wedding of ${config.groom.name}❤${config.bride.name}`,
+  //         description: "Please read by pressing the 'Open Invitation' button below 🤵👰",
+  //         imageUrl: config.kakaoImage,
+  //         link: {
+  //           mobileWebUrl: config.url,
+  //           webUrl: config.url,
+  //         },
+  //       },
+  //       buttons: [
+  //         {
+  //           title: 'Open Invitation',
+  //           link: {
+  //             mobileWebUrl: config.url,
+  //             webUrl: config.url,
+  //           },
+  //         },
+  //       ],
+  //       installTalk: true,
+  //     });
+  //     setTimeout(() => {
+  //       document.getElementById('sendKakao')?.click();
+  //       message.success('Sharing the invitation via KakaoTalk!');
+  //     }, 100);
+  //   }
+  // }, [config, shareCount]);
 
   return (
     <Section>

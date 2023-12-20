@@ -39,6 +39,7 @@ type LocationProps = {
 const Location = ({ config }: LocationProps) => {
   const ref = useRef<HTMLSelectElement>(null);
 
+  // eslint-disable-next-line jsx-a11y/img-redundant-alt
   return (
     <Section ref={ref}>
       <Layout>
@@ -55,7 +56,7 @@ const Location = ({ config }: LocationProps) => {
           <img
             style={{ width: isPortrait ? '90%' : '60%' }}
             src={config.locationMapImage}
-            alt="Wedding Invitation Title Picture"
+            alt="Wedding Invitation Title"
           />
         </SubTitle>
       </Layout>
