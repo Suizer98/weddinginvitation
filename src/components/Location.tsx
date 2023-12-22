@@ -12,6 +12,8 @@ import OSM from 'ol/source/OSM'
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import { Style, Fill, Stroke, Circle } from 'ol/style'
+import { defaults } from 'ol/control'
+import Control from 'ol/control/Control'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
@@ -41,6 +43,9 @@ const SubTitle = styled('p', {
   margin: '24px 0',
   fontWeight: '300',
   lineHeight: 1.8,
+  span: {
+    color: 'red',
+  },
 })
 
 const MapWrapper = styled('div', {
@@ -70,6 +75,25 @@ const Location = ({ config }: LocationProps) => {
           center: olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
           zoom: 15,
         }),
+        controls: defaults().extend([
+          // Add Recenter Button Control
+          new Control({
+            element: (() => {
+              const button = document.createElement('button')
+              button.innerHTML = 'Recenter'
+              button.style.position = 'absolute'
+              button.style.top = '10px'
+              button.style.right = '10px'
+              button.addEventListener('click', () => {
+                const view = map.getView()
+                view.setCenter(
+                  olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
+                )
+              })
+              return button
+            })(),
+          }),
+        ]),
       })
 
       // Add Marker with a bigger point
@@ -150,6 +174,9 @@ const Location = ({ config }: LocationProps) => {
           Address:
           <br />
           8, Jln Adda 2, Adda Heights, 81100 Johor Bahru, Johor
+          <br />
+          <br />
+          Click on the <span>red dot</span> to copy address!
         </SubTitle>
         <MapWrapper
           ref={mapRef}
