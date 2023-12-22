@@ -16,6 +16,7 @@ const Configs: ConfigsType = {
   kakaoImage: '',
   weddingDate: 'March 1, 2025',
   weddingLocation: '億家主题宴会厅 - Yijia Theme Banquet Hall',
+  weddingAddress: '8, Jln Adda 2, Adda Heights, 81100 Johor Bahru, Johor',
   groom: {
     name: 'Sui Zer',
     accountNumber: 'Bank: ***-***-******',
@@ -51,6 +52,7 @@ export type ConfigsType = {
   kakaoImage: string
   weddingDate: string
   weddingLocation: string
+  weddingAddress: string
   groom: Person
   bride: Person
   titleImage: string

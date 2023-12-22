@@ -14,6 +14,7 @@ import VectorSource from 'ol/source/Vector'
 import { Style, Fill, Stroke, Circle } from 'ol/style'
 import { defaults } from 'ol/control'
 import Control from 'ol/control/Control'
+import { message } from 'antd'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
@@ -61,6 +62,16 @@ type LocationProps = {
 const Location = ({ config }: LocationProps) => {
   const mapRef = useRef<HTMLDivElement>(null)
   const popupRef = useRef<HTMLDivElement>(null)
+
+  const copyToClipboard = (text: string) => {
+    const textArea = document.createElement('textarea')
+    textArea.value = text
+    document.body.appendChild(textArea)
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
+    message.success('Address copied!')
+  }
 
   useEffect(() => {
     if (mapRef.current) {
@@ -150,6 +161,9 @@ const Location = ({ config }: LocationProps) => {
         ) {
           const coordinates = (feature.getGeometry() as Point).getCoordinates()
           popup.setPosition(coordinates)
+
+          // Copy the address to clipboard when clicking on the red dot
+          copyToClipboard(config.weddingAddress)
         }
       })
 
@@ -162,7 +176,7 @@ const Location = ({ config }: LocationProps) => {
         map.dispose()
       }
     }
-  }, [mapRef])
+  }, [mapRef, config.weddingAddress])
 
   return (
     <Section>
@@ -173,7 +187,7 @@ const Location = ({ config }: LocationProps) => {
           <br />
           Address:
           <br />
-          8, Jln Adda 2, Adda Heights, 81100 Johor Bahru, Johor
+          {config.weddingAddress}
           <br />
           <br />
           Click on the <span>red dot</span> to copy address!
