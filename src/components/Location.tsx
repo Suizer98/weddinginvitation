@@ -100,6 +100,7 @@ const Location = ({ config }: LocationProps) => {
                 view.setCenter(
                   olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
                 )
+                view.setZoom(15)
               })
               return button
             })(),
@@ -147,6 +148,9 @@ const Location = ({ config }: LocationProps) => {
       })
 
       map.addOverlay(popup)
+      popup.setPosition(
+        olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
+      )
 
       // Show Popup when clicking on the marker
       map.on('click', (event) => {
@@ -159,17 +163,14 @@ const Location = ({ config }: LocationProps) => {
           feature instanceof Feature &&
           feature.getGeometry() instanceof Point
         ) {
-          const coordinates = (feature.getGeometry() as Point).getCoordinates()
-          popup.setPosition(coordinates)
-
           // Copy the address to clipboard when clicking on the red dot
+          popup.setPosition(undefined)
           copyToClipboard(config.weddingAddress)
+        } else {
+          popup.setPosition(
+            olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
+          )
         }
-      })
-
-      // Close Popup when clicking on the map
-      map.on('click', () => {
-        popup.setPosition(undefined)
       })
 
       return () => {
@@ -196,7 +197,14 @@ const Location = ({ config }: LocationProps) => {
           ref={mapRef}
           style={{ width: isPortrait ? '90%' : '60%', height: '500px' }}
         ></MapWrapper>
-        <div ref={popupRef} style={{ display: 'none' }}>
+        <div
+          ref={popupRef}
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            padding: '10px',
+            borderRadius: '5px',
+          }}
+        >
           <p>We are here!</p>
         </div>
       </Layout>
