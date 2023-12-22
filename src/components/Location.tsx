@@ -3,8 +3,15 @@ import { styled } from '@stitches/react'
 import { ConfigsType } from '../configs'
 import 'ol/ol.css'
 import { Map, View } from 'ol'
+import * as olProj from 'ol/proj'
+import Overlay from 'ol/Overlay'
+import Point from 'ol/geom/Point'
+import Feature from 'ol/Feature'
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM'
+import VectorLayer from 'ol/layer/Vector'
+import VectorSource from 'ol/source/Vector'
+import { Style, Fill, Stroke, Circle } from 'ol/style'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
@@ -48,6 +55,7 @@ type LocationProps = {
 
 const Location = ({ config }: LocationProps) => {
   const mapRef = useRef<HTMLDivElement>(null)
+  const popupRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (mapRef.current) {
@@ -59,9 +67,71 @@ const Location = ({ config }: LocationProps) => {
           }),
         ],
         view: new View({
-          center: [1.5493705212948794, 103.74600638294491],
+          center: olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
           zoom: 15,
         }),
+      })
+
+      // Add Marker with a bigger point
+      const marker = new Feature({
+        geometry: new Point(
+          olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
+        ),
+      })
+
+      // Define the style for the marker
+      const markerStyle = new Style({
+        image: new Circle({
+          radius: 10, // Adjust the radius to make the point bigger
+          fill: new Fill({
+            color: 'rgba(255, 0, 0, 0.7)', // Red color with some transparency
+          }),
+          stroke: new Stroke({
+            color: 'rgba(255, 0, 0, 0.9)', // Red color with more transparency for the border
+            width: 2,
+          }),
+        }),
+      })
+
+      marker.setStyle(markerStyle)
+
+      const markerLayer = new VectorLayer({
+        source: new VectorSource({
+          features: [marker],
+        }),
+      })
+
+      map.addLayer(markerLayer)
+
+      // Add Popup
+      const popup = new Overlay({
+        element: popupRef.current!,
+        positioning: 'bottom-center',
+        stopEvent: false,
+        offset: [0, -10],
+      })
+
+      map.addOverlay(popup)
+
+      // Show Popup when clicking on the marker
+      map.on('click', (event) => {
+        const feature = map.forEachFeatureAtPixel(
+          event.pixel,
+          (feature) => feature,
+        )
+
+        if (
+          feature instanceof Feature &&
+          feature.getGeometry() instanceof Point
+        ) {
+          const coordinates = (feature.getGeometry() as Point).getCoordinates()
+          popup.setPosition(coordinates)
+        }
+      })
+
+      // Close Popup when clicking on the map
+      map.on('click', () => {
+        popup.setPosition(undefined)
       })
 
       return () => {
@@ -75,7 +145,7 @@ const Location = ({ config }: LocationProps) => {
       <Layout>
         <Title>Wedding Avenue</Title>
         <SubTitle>
-          億家主题宴会厅 - Yijia Theme Banquet Hall
+          {config.weddingLocation}
           <br />
           Address:
           <br />
@@ -85,6 +155,9 @@ const Location = ({ config }: LocationProps) => {
           ref={mapRef}
           style={{ width: isPortrait ? '90%' : '60%', height: '500px' }}
         ></MapWrapper>
+        <div ref={popupRef} style={{ display: 'none' }}>
+          <p>We are here!</p>
+        </div>
       </Layout>
     </Section>
   )
