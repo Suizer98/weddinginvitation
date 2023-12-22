@@ -1,13 +1,13 @@
-import { styled } from '@stitches/react';
+import { styled } from '@stitches/react'
 
-const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Layout = styled('div', {
   textAlign: 'center',
   width: '100%',
   padding: '15px 10%',
   display: 'inline-block',
-});
+})
 
 const Envelope = styled('div', {
   background: '#A5423A',
@@ -15,7 +15,7 @@ const Envelope = styled('div', {
   borderRadius: '10px',
   margin: '0 auto',
   padding: '0px 0px 40% 0px',
-});
+})
 
 const Cover = styled('div', {
   padding: '20% 0',
@@ -23,7 +23,7 @@ const Cover = styled('div', {
   backgroundColor: '#BD503A',
   borderRadius: '10px 10px 50% 50% / 10px 10px 15% 15%',
   boxShadow: '0px 4px 0px -1px rgba(0,0,0,0.2)',
-});
+})
 
 const Sticker = styled('div', {
   width: isPortrait ? '2.2em' : '6em',
@@ -35,22 +35,25 @@ const Sticker = styled('div', {
   display: 'inline-block',
   boxShadow: '0px 4px 0px 0px rgba(0, 0, 0, 0.2)',
   marginTop: '-3em',
-});
+})
 
-const Title = styled('h2', { fontSize: isPortrait ? '1.5em' : '3em', color: '#FFF' });
+const Title = styled('h2', {
+  fontSize: isPortrait ? '1.5em' : '3em',
+  color: '#FFF',
+})
 
 const SubTitle = styled('div', {
   margin: '15px 0',
   fontSize: isPortrait ? '0.8em' : '2em',
   fontWeight: 600,
   color: '#EEEEEE',
-});
+})
 
 type HongBaoProps = {
-  title: string;
-  subTitle: string;
-  onClick?: () => void;
-};
+  title: string
+  subTitle: string
+  onClick?: () => void
+}
 
 const HongBao = ({ title, subTitle, onClick }: HongBaoProps) => {
   return (
@@ -63,7 +66,7 @@ const HongBao = ({ title, subTitle, onClick }: HongBaoProps) => {
         <Sticker />
       </Envelope>
     </Layout>
-  );
-};
+  )
+}
 
-export default HongBao;
+export default HongBao

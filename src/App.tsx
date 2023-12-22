@@ -1,69 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import Gallery from './components/Gallery';
-import Greeting from './components/Greeting';
-import TitleLayout from './components/Title';
-import Location from './components/Location';
+import React, { useState, useEffect } from 'react'
+import Gallery from './components/Gallery'
+import Greeting from './components/Greeting'
+import TitleLayout from './components/Title'
+import Location from './components/Location'
 // import CongratulatoryMoney from './components/CongratulatoryMoney';
-import Configs from './configs';
-import Share from './components/Share';
-import { Layout, Button } from 'antd';
+import Configs from './configs'
+import Share from './components/Share'
+import { Layout, Button } from 'antd'
 
-const { Footer } = Layout;
+const { Footer } = Layout
 
 function App() {
-  const [showDetails, setShowDetails] = useState(false);
-  const [buttonVisible, setButtonVisible] = useState(true);
+  const [showDetails, setShowDetails] = useState(false)
+  const [buttonVisible, setButtonVisible] = useState(true)
 
   useEffect(() => {
     // Start playing music when showDetails becomes true
     if (showDetails) {
-      const audio = new Audio(Configs.music);
-      audio.loop = true;
+      const audio = new Audio(Configs.music)
+      audio.loop = true
 
       // Play the audio
       audio.play().catch((error) => {
         // Handle errors, e.g., autoplay is prevented
-        console.error('Error playing music:', error.message);
-      });
+        console.error('Error playing music:', error.message)
+      })
 
       // Cleanup function
       return () => {
-        audio.pause();
-        audio.currentTime = 0;
-      };
+        audio.pause()
+        audio.currentTime = 0
+      }
     }
-  }, [showDetails]);
+  }, [showDetails])
 
   const handleShowDetails = () => {
-    setShowDetails(true);
+    setShowDetails(true)
 
     // Set a timer to hide the button after a delay (e.g., 500ms)
     setTimeout(() => {
-      setButtonVisible(false);
-      
+      setButtonVisible(false)
+
       // Scroll to the Greeting section
-      const greetingSection = document.getElementById('greeting-section');
+      const greetingSection = document.getElementById('greeting-section')
       if (greetingSection) {
-        const start = window.scrollY;
-        const end = greetingSection.offsetTop;
-        const distance = end - start;
-        const duration = 1000; // Adjust the duration (in milliseconds)
-        const startTime = performance.now();
-  
+        const start = window.scrollY
+        const end = greetingSection.offsetTop
+        const distance = end - start
+        const duration = 1000 // Adjust the duration (in milliseconds)
+        const startTime = performance.now()
+
         const step = (time: any) => {
-          const elapsed = time - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          window.scrollTo(0, start + distance * progress);
-        
+          const elapsed = time - startTime
+          const progress = Math.min(elapsed / duration, 1)
+          window.scrollTo(0, start + distance * progress)
+
           if (progress < 1) {
-            requestAnimationFrame(step);
+            requestAnimationFrame(step)
           }
-        };
-        
-        requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step)
       }
-    }, 500);
-  };
+    }, 500)
+  }
 
   const footerStyles: React.CSSProperties = {
     background: '#D7CCC8',
@@ -73,7 +73,7 @@ function App() {
     bottom: 0,
     width: '100%',
     transition: 'opacity 0.5s', // Apply a transition effect to opacity
-  };
+  }
 
   return (
     <main style={{ height: '100%' }}>
@@ -88,9 +88,17 @@ function App() {
         </>
       )}
       <div>
-        <Footer style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}>
+        <Footer
+          style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}
+        >
           {buttonVisible && (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
               <Button
                 style={{
                   background: '#E1306C',
@@ -108,7 +116,7 @@ function App() {
         </Footer>
       </div>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App

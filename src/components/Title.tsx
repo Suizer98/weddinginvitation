@@ -1,16 +1,16 @@
-import { styled } from '@stitches/react';
-import Confetti from 'react-confetti';
-import { useWindowSize } from 'react-use';
-import { ConfigsType } from '../configs';
+import { styled } from '@stitches/react'
+import Confetti from 'react-confetti'
+import { useWindowSize } from 'react-use'
+import { ConfigsType } from '../configs'
 
-const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Section = styled('section', {
   height: '100%',
   background: '#DADADA',
   overflow: 'hidden',
   position: 'relative',
-});
+})
 
 const Layout = styled('div', {
   width: '100%',
@@ -18,7 +18,7 @@ const Layout = styled('div', {
   textAlign: 'center',
   marginTop: '3.5%',
   animation: 'fadein 2.5s',
-});
+})
 
 const TitleLayout = styled('p', {
   width: '100%',
@@ -26,7 +26,7 @@ const TitleLayout = styled('p', {
   margin: 0,
   fontWeight: '500',
   fontFamily: 'Pristina',
-});
+})
 
 const SubTitleLayout = styled('p', {
   width: '100%',
@@ -34,7 +34,7 @@ const SubTitleLayout = styled('p', {
   margin: '24px 0',
   fontWeight: '300',
   fontFamily: 'Pristina',
-});
+})
 
 const ImageLayout = styled('div', {
   width: '100%',
@@ -43,33 +43,33 @@ const ImageLayout = styled('div', {
   top: '10px',
   textAlign: 'center',
   position: 'bottom',
-});
+})
 
 const Image = styled('img', {
   width: isPortrait ? '100%' : '40%',
-});
+})
 
 type TitleProps = {
-  config: ConfigsType;
-  showDetails: boolean;
-};
+  config: ConfigsType
+  showDetails: boolean
+}
 
 const Title = ({ config, showDetails }: TitleProps) => {
-  const { width, height } = useWindowSize();
+  const { width, height } = useWindowSize()
 
   return (
     <>
       {showDetails && (
-      <Confetti
-        width={width}
-        height={height}
-        numberOfPieces={100}
-        gravity={0.05}
-        colors={['#FFCDD2', '#F8BBD0', '#D1C4E9']}
-        recycle={true}
-        style={{ position: 'fixed' }}
-      />)
-      }
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={100}
+          gravity={0.05}
+          colors={['#FFCDD2', '#F8BBD0', '#D1C4E9']}
+          recycle={true}
+          style={{ position: 'fixed' }}
+        />
+      )}
       <Section>
         <Layout>
           <SubTitleLayout>Wedding Invitation</SubTitleLayout>
@@ -83,11 +83,14 @@ const Title = ({ config, showDetails }: TitleProps) => {
           </SubTitleLayout> */}
         </Layout>
         <ImageLayout>
-          <Image src={config.titleImage} alt="Wedding Invitation Title Picutre" />
+          <Image
+            src={config.titleImage}
+            alt="Wedding Invitation Title Picutre"
+          />
         </ImageLayout>
       </Section>
     </>
-  );
-};
+  )
+}
 
-export default Title;
+export default Title

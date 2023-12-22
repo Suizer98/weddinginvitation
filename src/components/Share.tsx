@@ -1,29 +1,29 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { styled } from '@stitches/react';
+import { styled } from '@stitches/react'
 // import { useEffect, useState } from 'react';
-import { Button, message } from 'antd';
-import { LinkOutlined } from '@ant-design/icons';
-import CopyToClipboard from 'react-copy-to-clipboard';
-import { ConfigsType } from '../configs';
+import { Button, message } from 'antd'
+import { LinkOutlined } from '@ant-design/icons'
+import CopyToClipboard from 'react-copy-to-clipboard'
+import { ConfigsType } from '../configs'
 
 declare global {
   interface Window {
-    Kakao: any;
+    Kakao: any
   }
 }
 
-const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
   position: 'relative',
-});
+})
 
 const Layout = styled('div', {
   width: '100%',
   padding: isPortrait ? '20% 0% 10% 5%' : '5% 0% 5% 10%',
-});
+})
 
 const Title = styled('p', {
   color: '#795548',
@@ -31,13 +31,13 @@ const Title = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
-});
+})
 
 const ButtonGroup = styled('div', {
   width: '100%',
   textAlign: 'center',
   paddingBottom: isPortrait ? '10%' : '5%',
-});
+})
 
 // const KakaoTalkShareButton = styled(Button, {
 //   background: '#fee500',
@@ -69,17 +69,17 @@ const LinkShareButton = styled(Button, {
     borderColor: '#9fcbed !important',
     color: '#ffffff !important',
   },
-});
+})
 
 type ShareProps = {
-  config: ConfigsType;
-};
+  config: ConfigsType
+}
 
 const Share = ({ config }: ShareProps) => {
   // const [shareCount, setShareCount] = useState<number>(0);
 
   if (!window.Kakao.isInitialized()) {
-    window.Kakao.init(config.kakaoToken);
+    window.Kakao.init(config.kakaoToken)
   }
 
   // useEffect(() => {
@@ -141,7 +141,7 @@ const Share = ({ config }: ShareProps) => {
         </CopyToClipboard>
       </ButtonGroup>
     </Section>
-  );
-};
+  )
+}
 
-export default Share;
+export default Share

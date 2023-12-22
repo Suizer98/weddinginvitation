@@ -1,14 +1,14 @@
-import TitleImage from './resources/ring.jpg';
-import LocationMapImage from './resources/LocationMap.png';
+import TitleImage from './resources/ring.jpg'
+import LocationMapImage from './resources/LocationMap.png'
 // @ts-ignore
-import GalleryPhoto1 from './resources/photo1.jpg';
-import GalleryPhoto2 from './resources/photo2.jpg';
-import GalleryPhoto3 from './resources/photo3.jpg';
-import GalleryPhoto4 from './resources/photo4.jpg';
-import GalleryPhoto5 from './resources/photo5.jpg';
-import GalleryPhoto6 from './resources/photo6.jpg';
+import GalleryPhoto1 from './resources/photo1.jpg'
+import GalleryPhoto2 from './resources/photo2.jpg'
+import GalleryPhoto3 from './resources/photo3.jpg'
+import GalleryPhoto4 from './resources/photo4.jpg'
+import GalleryPhoto5 from './resources/photo5.jpg'
+import GalleryPhoto6 from './resources/photo6.jpg'
 // @ts-ignore
-import Music from './resources/music.mp3';
+import Music from './resources/music.mp3'
 
 const Configs: ConfigsType = {
   url: 'http://localhost:3000',
@@ -43,29 +43,29 @@ const Configs: ConfigsType = {
     GalleryPhoto6,
   ],
   music: Music,
-};
+}
 
 export type ConfigsType = {
-  url: string;
-  kakaoToken: string;
-  kakaoImage: string;
-  weddingDate: string;
-  weddingLocation: string;
-  groom: Person;
-  bride: Person;
-  titleImage: string;
-  locationMapImage: string;
-  galleryImages: string[];
-  music: string;
-};
+  url: string
+  kakaoToken: string
+  kakaoImage: string
+  weddingDate: string
+  weddingLocation: string
+  groom: Person
+  bride: Person
+  titleImage: string
+  locationMapImage: string
+  galleryImages: string[]
+  music: string
+}
 
 type Person = {
-  name: string;
-  accountNumber: string;
-  fatherName?: string;
-  fatherAccountNumber?: string;
-  motherName?: string;
-  motherAccountNumber?: string;
-};
+  name: string
+  accountNumber: string
+  fatherName?: string
+  fatherAccountNumber?: string
+  motherName?: string
+  motherAccountNumber?: string
+}
 
-export default Configs;
+export default Configs

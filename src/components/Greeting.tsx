@@ -1,14 +1,14 @@
-import { useRef } from 'react';
-import { styled } from '@stitches/react';
-import useOnScreen from '../hooks/useOnScreen';
-import { ConfigsType } from '../configs';
+import { useRef } from 'react'
+import { styled } from '@stitches/react'
+import useOnScreen from '../hooks/useOnScreen'
+import { ConfigsType } from '../configs'
 
-const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Layout = styled('div', {
   width: '100%',
   padding: isPortrait ? '30% 0% 15% 5%' : '5% 0% 5% 10%',
-});
+})
 
 const Title = styled('p', {
   color: '#795548',
@@ -16,7 +16,7 @@ const Title = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
-});
+})
 
 const SubTitle = styled('p', {
   color: '#795548',
@@ -25,16 +25,16 @@ const SubTitle = styled('p', {
   margin: '24px 0',
   fontWeight: '300',
   lineHeight: 1.8,
-});
+})
 
 type GreetingProps = {
   id: string
-  config: ConfigsType;
-};
+  config: ConfigsType
+}
 
 const Greeting = ({ id, config }: GreetingProps) => {
-  const ref = useRef<HTMLSelectElement>(null);
-  const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px');
+  const ref = useRef<HTMLSelectElement>(null)
+  const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
 
   return (
     <section
@@ -68,12 +68,13 @@ const Greeting = ({ id, config }: GreetingProps) => {
           Please illuminate the place of our energetic start.
           <br />
           <br />
-          Scroll down to see the love story of {config.groom.name} & {config.bride.name}...
+          Scroll down to see the love story of {config.groom.name} &{' '}
+          {config.bride.name}...
           <br />
         </SubTitle>
       </Layout>
     </section>
-  );
-};
+  )
+}
 
-export default Greeting;
+export default Greeting
