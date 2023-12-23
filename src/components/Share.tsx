@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { styled } from '@stitches/react'
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import { Button, message } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -39,22 +39,6 @@ const ButtonGroup = styled('div', {
   paddingBottom: isPortrait ? '10%' : '5%',
 })
 
-// const KakaoTalkShareButton = styled(Button, {
-//   background: '#fee500',
-//   borderColor: '#fee500',
-//   color: '#181600',
-//   '&:hover': {
-//     backgroundColor: '#fcf07e !important',
-//     borderColor: '#fcf07e !important',
-//     color: '#17160b !important',
-//   },
-//   '&:focus': {
-//     backgroundColor: '#fcf07e !important',
-//     borderColor: '#fcf07e !important',
-//     color: '#17160b !important',
-//   },
-// });
-
 const LinkShareButton = styled(Button, {
   background: '#53acee',
   borderColor: '#53acee',
@@ -71,64 +55,54 @@ const LinkShareButton = styled(Button, {
   },
 })
 
+const WhatsAppButton = styled(Button, {
+  background: '#25d366', // WhatsApp green color
+  borderColor: '#25d366',
+  color: '#ffffff',
+  '&:hover': {
+    backgroundColor: '#128C7E !important', // Darker shade on hover
+    borderColor: '#128C7E !important',
+    color: '#ffffff !important',
+  },
+  '&:focus': {
+    backgroundColor: '#128C7E !important',
+    borderColor: '#128C7E !important',
+    color: '#ffffff !important',
+  },
+})
+
 type ShareProps = {
   config: ConfigsType
 }
 
 const Share = ({ config }: ShareProps) => {
-  // const [shareCount, setShareCount] = useState<number>(0);
+  const [shareCount, setShareCount] = useState<number>(0)
 
   if (!window.Kakao.isInitialized()) {
     window.Kakao.init(config.kakaoToken)
   }
 
-  // useEffect(() => {
-  //   if (shareCount !== 0) {
-  //     window.Kakao.Share.createDefaultButton({
-  //       objectType: 'feed',
-  //       container: '#sendKakao',
-  //       content: {
-  //         title: `Invitation to the Wedding of ${config.groom.name}❤${config.bride.name}`,
-  //         description: "Please read by pressing the 'Open Invitation' button below 🤵👰",
-  //         imageUrl: config.kakaoImage,
-  //         link: {
-  //           mobileWebUrl: config.url,
-  //           webUrl: config.url,
-  //         },
-  //       },
-  //       buttons: [
-  //         {
-  //           title: 'Open Invitation',
-  //           link: {
-  //             mobileWebUrl: config.url,
-  //             webUrl: config.url,
-  //           },
-  //         },
-  //       ],
-  //       installTalk: true,
-  //     });
-  //     setTimeout(() => {
-  //       document.getElementById('sendKakao')?.click();
-  //       message.success('Sharing the invitation via KakaoTalk!');
-  //     }, 100);
-  //   }
-  // }, [config, shareCount]);
+  useEffect(() => {
+    if (shareCount !== 0) {
+      // Replace Kakao share logic with WhatsApp share logic
+      const whatsappLink = `https://api.whatsapp.com/send?phone=601128655756`
+      window.open(whatsappLink, '_blank')
+    }
+  }, [config, shareCount])
 
   return (
     <Section>
       <Layout>
-        <Title>Share the Invitation with your love ones</Title>
+        <Title>Share and contact us about this joyful event!</Title>
       </Layout>
       <ButtonGroup>
-        {/* <KakaoTalkShareButton
+        <WhatsAppButton
           style={{ margin: 8 }}
-          icon={<MessageFilled />}
-          id="sendKakao"
           size="large"
           onClick={() => setShareCount(shareCount + 1)}
         >
-          Share via KakaoTalk
-        </KakaoTalkShareButton> */}
+          Contact us through WhatsApp
+        </WhatsAppButton>
         <CopyToClipboard text={config.url}>
           <LinkShareButton
             style={{ margin: 8 }}
