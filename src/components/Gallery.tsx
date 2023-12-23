@@ -1,8 +1,7 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { styled } from '@stitches/react'
 import { Col, Image, Row } from 'antd'
 import useOnScreen from '../hooks/useOnScreen'
-
 import { useWindowSize } from 'react-use'
 import { ConfigsType } from '../configs'
 
@@ -31,6 +30,9 @@ const Gallery = ({ config }: GalleryProps) => {
   const ref = useRef<HTMLSelectElement>(null)
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
 
+  const [previewVisible, setPreviewVisible] = useState<boolean>(false)
+  const [previewIndex] = useState<number>(0)
+
   return (
     <section
       ref={ref}
@@ -46,14 +48,23 @@ const Gallery = ({ config }: GalleryProps) => {
         <Title>Our Beautiful Moments</Title>
       </Layout>
       <Row gutter={[16, 16]}>
-        {config.galleryImages.map((image, index) => (
-          <Col key={index} span={isPortrait ? 6 : 3}>
-            <Image
-              width={isPortrait ? width / 4 - 10 : width / 8 - 10}
-              src={image}
-            />
-          </Col>
-        ))}
+        <Image.PreviewGroup
+          preview={{
+            visible: previewVisible,
+            onVisibleChange: (visible) => setPreviewVisible(visible),
+            current: previewIndex,
+          }}
+        >
+          {config.galleryImages.map((image, index) => (
+            <Col key={index} span={isPortrait ? 6 : 3}>
+              <Image
+                key={index}
+                src={image}
+                width={isPortrait ? width / 4 - 10 : width / 8 - 10}
+              />
+            </Col>
+          ))}
+        </Image.PreviewGroup>
       </Row>
     </section>
   )

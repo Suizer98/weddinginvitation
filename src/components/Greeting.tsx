@@ -65,7 +65,7 @@ const Greeting = ({ id, config }: GreetingProps) => {
           <br />
           With warm encouragement and blessings,
           <br />
-          Please illuminate the place of our energetic start.
+          Welcome to illuminate the place of our new start.
           <br />
           <br />
           Scroll down to see the love story of {config.groom.name} &{' '}
