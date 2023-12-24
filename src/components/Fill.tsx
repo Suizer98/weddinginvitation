@@ -66,7 +66,7 @@ const Fill = ({ config }: FillProps) => {
         }
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
+      message.error('User already existed!')
     }
   }
 
