@@ -75,7 +75,7 @@ const Fill = ({ config }: FillProps) => {
       ref={ref}
       style={{
         height: '100vh',
-        background: onScreen ? '#EFEBE9' : '#DADADA',
+        background: onScreen ? '#e3b7a6' : '#DADADA',
         overflow: 'hidden',
         position: 'relative',
         transition: 'background 1s ease-in',
@@ -85,17 +85,25 @@ const Fill = ({ config }: FillProps) => {
         <Title>Date: {config.weddingDate}</Title>
         <SubTitle>Let us know if you are attending!</SubTitle>
         <Form form={form} onFinish={onFinish}>
-          <Form.Item label="Name" name="name" style={{ width: '50%' }}>
+          <Form.Item
+            label="Name"
+            name="name"
+            style={{ width: isPortrait ? '90%' : '35%' }}
+          >
             <Input />
           </Form.Item>
           <Form.Item
             label="Number of Pax"
             name="numberOfPax"
-            style={{ width: '50%' }}
+            style={{ width: isPortrait ? '90%' : '35%' }}
           >
             <Input />
           </Form.Item>
-          <Form.Item label="Allergic" name="allergic" style={{ width: '50%' }}>
+          <Form.Item
+            label="Allergic"
+            name="allergic"
+            style={{ width: isPortrait ? '90%' : '35%' }}
+          >
             <Input />
           </Form.Item>
           <Form.Item>

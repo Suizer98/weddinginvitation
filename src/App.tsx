@@ -89,6 +89,7 @@ function App() {
           <Share config={Configs} />
         </>
       )}
+      <div style={{ height: '70px' }}></div>
       <div>
         <Footer
           style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}

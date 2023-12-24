@@ -18,6 +18,7 @@ const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
   position: 'relative',
+  height: '50vh',
 })
 
 const Layout = styled('div', {
