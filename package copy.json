@@ -2,7 +2,7 @@
   "name": "wedding-invitation",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://szlyciawedding-ff63b63bca4a.herokuapp.com/",
+  "homepage": "https://tranquil-clafoutis-bd9fcb.netlify.app/",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@stitches/react": "^1.2.8",
