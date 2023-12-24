@@ -6,6 +6,7 @@ import Location from './components/Location'
 // import CongratulatoryMoney from './components/CongratulatoryMoney';
 import Configs from './configs'
 import Share from './components/Share'
+import Fill from './components/Fill'
 import { Layout, Button } from 'antd'
 
 const { Footer } = Layout
@@ -84,6 +85,7 @@ function App() {
           <Gallery config={Configs} />
           <Location config={Configs} />
           {/* <CongratulatoryMoney config={Configs} /> */}
+          <Fill config={Configs} />
           <Share config={Configs} />
         </>
       )}
