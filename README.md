@@ -21,3 +21,7 @@ To install all dependencies from `package.json`
 ### `npm run format`
 
 To fix format lintings for all codes using `prettier`
+
+### `heroku stack:set heroku-22 -a szlyciawedding`
+
+Set default stack as free ontainer dont have enough memory
