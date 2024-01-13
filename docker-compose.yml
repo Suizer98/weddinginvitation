@@ -9,3 +9,5 @@ services:
     container_name: weddinginvitation
     ports:
       - "3000:3000"
+    volumes:
+      - .:/usr/src/app

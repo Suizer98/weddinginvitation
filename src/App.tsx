@@ -68,7 +68,7 @@ function App() {
 
   const footerStyles: React.CSSProperties = {
     background: '#D7CCC8',
-    opacity: 1,
+    opacity: 0.9,
     textAlign: 'center',
     position: 'fixed',
     bottom: 0,
@@ -95,17 +95,11 @@ function App() {
           style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}
         >
           {buttonVisible && (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
+            <div>
               <Button
                 style={{
-                  background: '#E1306C',
-                  borderColor: '#E1306C',
+                  background: '#F5838F',
+                  borderColor: '#F5838F',
                   opacity: showDetails ? 0 : 1, // Adjust opacity based on showDetails
                 }}
                 onClick={handleShowDetails}
