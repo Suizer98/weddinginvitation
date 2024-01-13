@@ -9,7 +9,7 @@ const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '30% 0% 15% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '20% 0% 15% 5%' : '5% 0% 5% 10%',
 })
 
 const Title = styled('p', {

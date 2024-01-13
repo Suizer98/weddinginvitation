@@ -6,7 +6,7 @@ import { ConfigsType } from '../configs'
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Section = styled('section', {
-  height: '100%',
+  height: '100vh',
   background: '#DADADA',
   overflow: 'hidden',
   position: 'relative',
@@ -25,7 +25,7 @@ const TitleLayout = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
-  // fontFamily: 'Pristina',
+  fontFamily: 'dejavu-sans',
 })
 
 const SubTitleLayout = styled('p', {
@@ -33,12 +33,12 @@ const SubTitleLayout = styled('p', {
   fontSize: isPortrait ? '1.2em' : '2.5em',
   margin: '24px 0',
   fontWeight: '300',
-  // fontFamily: 'Pristina',
+  fontFamily: 'dejavu-sans',
 })
 
 const ImageLayout = styled('div', {
   width: '100%',
-  height: '50%',
+  height: '70%',
   background: '#DADADA',
   top: '10px',
   textAlign: 'center',
@@ -65,7 +65,7 @@ const Title = ({ config, showDetails }: TitleProps) => {
           height={height}
           numberOfPieces={100}
           gravity={0.05}
-          colors={['#FFCDD2', '#F8BBD0', '#D1C4E9']}
+          colors={['#FFCDD2', '#F8BBD0', '#D1C4E9', '#F5838F']}
           recycle={true}
           style={{ position: 'fixed' }}
         />

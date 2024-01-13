@@ -68,7 +68,7 @@ function App() {
 
   const footerStyles: React.CSSProperties = {
     background: '#D7CCC8',
-    opacity: 0.9,
+    opacity: 0.8,
     textAlign: 'center',
     position: 'fixed',
     bottom: 0,

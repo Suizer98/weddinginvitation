@@ -12,22 +12,25 @@ Database: https://dashboard.render.com/d/dpg-cmgks7o21fec739svdsg-a
 
 In the project directory, you can run:
 
-### `npm start`
+### Runs the app in the development mode
 
-Runs the app in the development mode.\
+```npm start```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm install`
+### To install all dependencies from `package.json`
+```npm install```
 
-To install all dependencies from `package.json`
+### To fix format lintings for all codes using `prettier`
+Usual terminal commands such as:
+```npm run format``` 
 
-### `npm run format`
+OR
 
-To fix format lintings for all codes using `prettier`
+```docker exec -it weddinginvitation npm run format```
 
-### `heroku stack:set heroku-22 -a szlyciawedding`
-
-Set default stack as free ontainer dont have enough memory
+### Set default stack as free ontainer
+```heroku stack:set heroku-22 -a szlyciawedding```
 
 ### `Staging website configuration`
 https://app.netlify.com/sites/tranquil-clafoutis-bd9fcb/overview

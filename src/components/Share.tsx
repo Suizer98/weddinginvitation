@@ -18,12 +18,13 @@ const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
   position: 'relative',
-  height: '50vh',
+  height: '60vh',
 })
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '20% 0% 10% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '15% 0% 10% 5%' : '5% 0% 5% 10%',
+  paddingtop: '50px',
 })
 
 const Title = styled('p', {
