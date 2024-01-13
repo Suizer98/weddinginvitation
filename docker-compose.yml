@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  weddinginvitation:
+    image: weddinginvitation:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: weddinginvitation
+    ports:
+      - "3000:3000"
