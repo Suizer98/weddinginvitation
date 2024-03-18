@@ -41,7 +41,7 @@ const Fill = ({ config }: FillProps) => {
   const onFinish = async (values: any) => {
     try {
       const response = await axios.post(
-        'https://weddingbackend-1361111488b1.herokuapp.com/users',
+        'https://suizerlyciabackend.netlify.app/api/users',
         {
           name: values.name,
           pax: values.numberOfPax,
