@@ -41,7 +41,7 @@ const Fill = ({ config }: FillProps) => {
   const onFinish = async (values: any) => {
     try {
       const response = await axios.post(
-        'https://suizerlyciabackend.netlify.app/api/users',
+        config.backendURL,
         {
           name: values.name,
           pax: values.numberOfPax,
