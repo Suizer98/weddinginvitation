@@ -1,10 +1,10 @@
 # Wedding Invitation App
 
-Tech Stack: Netlify, Vite, React TS, Ant Design, Heroku container, Python FastAPI, Render PostgreSQL
+Tech Stack: Netlify, Vite, React TS, Ant Design, Render container (previously Heroku container), Python FastAPI, Render PostgreSQL
 
 Frontend: https://tranquil-clafoutis-bd9fcb.netlify.app/
 
-Backend: https://weddingbackend-1361111488b1.herokuapp.com/
+Backend: https://weddingbackend-ba3z.onrender.com
 
 Database: https://dashboard.render.com/d/dpg-cmgks7o21fec739svdsg-a
 
