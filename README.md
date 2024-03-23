@@ -2,7 +2,7 @@
 
 Tech Stack: Netlify, Vite, React TS, Ant Design, Render container (previously Heroku container), Python FastAPI, Render PostgreSQL
 
-Frontend: https://tranquil-clafoutis-bd9fcb.netlify.app/
+Frontend: https://suizerlyciawedding.netlify.app/
 
 Backend: https://weddingbackend-ba3z.onrender.com
 
