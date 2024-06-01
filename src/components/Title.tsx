@@ -25,7 +25,7 @@ const TitleLayout = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
-  fontFamily: 'dejavu-sans',
+  fontFamily: 'Great Vibes, cursive',
 })
 
 const SubTitleLayout = styled('p', {
@@ -33,7 +33,7 @@ const SubTitleLayout = styled('p', {
   fontSize: isPortrait ? '1.2em' : '2.5em',
   margin: '24px 0',
   fontWeight: '300',
-  fontFamily: 'dejavu-sans',
+  fontFamily: 'Great Vibes, cursive',
 })
 
 const ImageLayout = styled('div', {
