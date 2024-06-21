@@ -6,37 +6,63 @@ Tech Stack: Netlify, Vite, React TS, Ant Design, Render container (previously He
 
 Frontend: https://suizerlyciawedding.netlify.app/
 
-Backend: https://weddingbackend-ba3z.onrender.com
+Backend: Render free Docker web service
 
-Database: https://dashboard.render.com/d/dpg-cmgks7o21fec739svdsg-a
+Database: Render free tier PostgreSQL
 
-## Available Scripts
+## Local Development
 
-In the project directory, you can run:
+### To install all dependencies from `package.json`
+
+If you have `nvm` or `npm` available, simply run:
+```
+npm install
+```
+### Docker container
+
+If you are Docker euthanist, have Docker Desktop on your end:
+```
+docker-compose up --build
+```
 
 ### Runs the app in the development mode
 
-```npm start```
+```
+npm start
+```
+```
+docker-compose up # provided you have Docker installed
+```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### To install all dependencies from `package.json`
-```npm install```
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 
 
 ### To fix format lintings for all codes using `prettier`
+
 Usual terminal commands such as:
-```npm run format``` 
+```
+npm run format
+``` 
 
 OR
 
-```docker exec -it weddinginvitation npm run format```
+```
+docker exec -it weddinginvitation npm run format
+```
 
-### Set default stack as free ontainer
-```heroku stack:set heroku-22 -a szlyciawedding```
+## Staging environment (Heroku, Render...)
 
-### `Staging website configuration`
-https://app.netlify.com/sites/tranquil-clafoutis-bd9fcb/overview
+### Set Heroku default stack as free container
+```
+heroku login
+heroku stack:set heroku-22 -a szlyciawedding
+```
+
+### Create Render Docker web service
+See [backend](https://github.com/Suizer98/weddingbackend)
+
+### Staging website configuration
+https://app.netlify.com/sites/suizerlyciawedding/overview
 
 https://dashboard.heroku.com/apps/weddingbackend
 
-https://dashboard.render.com/d/dpg-cmgks7o21fec739svdsg-a
+https://dashboard.render.com/d/dpg-cpk09cf109ks73etk9ng-a
