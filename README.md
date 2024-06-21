@@ -4,9 +4,9 @@ Tech Stack: Netlify, Vite, React TS, Ant Design, Render container (previously He
 
 ![Tech stacks](https://skillicons.dev/icons?i=vite,ts,react,fastapi,python,docker,ubuntu,bash,heroku,netlify,postgres)
 
-Frontend: https://suizerlyciawedding.netlify.app/
+Frontend: https://suizerlyciawedding.netlify.app/ (Shut down when inactive)
 
-Backend: Render free Docker web service
+Backend: Render free instance Docker web service (Shut down when inactive)
 
 Database: Render free tier PostgreSQL
 
@@ -56,13 +56,14 @@ docker exec -it weddinginvitation npm run format
 heroku login
 heroku stack:set heroku-22 -a szlyciawedding
 ```
+Note: This website is now migrated to `Netlify`
 
 ### Create Render Docker web service
-See [backend](https://github.com/Suizer98/weddingbackend)
+Refer to [backend](https://github.com/Suizer98/weddingbackend)
 
 ### Staging website configuration
 https://app.netlify.com/sites/suizerlyciawedding/overview
 
-https://dashboard.heroku.com/apps/weddingbackend
+https://dashboard.render.com/web/srv-cnsllki1hbls73fsh060
 
 https://dashboard.render.com/d/dpg-cpk09cf109ks73etk9ng-a
