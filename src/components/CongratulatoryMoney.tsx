@@ -1,7 +1,8 @@
 import { styled } from '@stitches/react'
-import { Button, Divider, message, Modal } from 'antd'
+import { Button, Divider, Modal, message } from 'antd'
 import { useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
+
 import { ConfigsType } from '../configs'
 import HongBao from './HongBao'
 
@@ -10,12 +11,12 @@ const isPortrait = window.matchMedia('(orientation: portrait)').matches
 const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
-  position: 'relative',
+  position: 'relative'
 })
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '10% 0% 10% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '10% 0% 10% 5%' : '5% 0% 5% 10%'
 })
 
 const Title = styled('p', {
@@ -23,7 +24,7 @@ const Title = styled('p', {
   width: '100%',
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
-  fontWeight: '500',
+  fontWeight: '500'
 })
 
 const SubTitle = styled('p', {
@@ -32,19 +33,19 @@ const SubTitle = styled('p', {
   fontSize: isPortrait ? '1.2em' : '2em',
   margin: '24px 0',
   fontWeight: '300',
-  lineHeight: 1.8,
+  lineHeight: 1.8
 })
 
 const GridLayout = styled('div', {
   display: 'grid',
-  gridTemplateColumns: '50% 50%',
+  gridTemplateColumns: '50% 50%'
 })
 
 const Description = styled('p', {
   fontSize: '1em',
   lineHeight: 1.75,
   opacity: 0.65,
-  marginTop: '8px',
+  marginTop: '8px'
 })
 
 type CongratulatoryMoneyProps = {
@@ -80,11 +81,7 @@ const CongratulatoryMoney = ({ config }: CongratulatoryMoneyProps) => {
         onCancel={() => setGroomVisible(false)}
         cancelButtonProps={{ style: { display: 'none' } }}
         okButtonProps={{ style: { display: 'none' } }}
-        footer={[
-          <Description>
-            Click on the account number to copy it for pasting.
-          </Description>,
-        ]}
+        footer={[<Description>Click on the account number to copy it for pasting.</Description>]}
       >
         <div>
           <b>Father) {config.groom.fatherName}</b>
@@ -133,11 +130,7 @@ const CongratulatoryMoney = ({ config }: CongratulatoryMoneyProps) => {
         onCancel={() => setBrideVisible(false)}
         cancelButtonProps={{ style: { display: 'none' } }}
         okButtonProps={{ style: { display: 'none' } }}
-        footer={[
-          <Description>
-            Click on the account number to copy it for pasting.
-          </Description>,
-        ]}
+        footer={[<Description>Click on the account number to copy it for pasting.</Description>]}
       >
         <div>
           <b>Father) {config.bride.fatherName}</b>

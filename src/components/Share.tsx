@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { styled } from '@stitches/react'
-import { useEffect, useState } from 'react'
-import { Button, message } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
+import { styled } from '@stitches/react'
+import { Button, message } from 'antd'
+import { useEffect, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
+
 import { ConfigsType } from '../configs'
 
 declare global {
@@ -18,27 +19,28 @@ const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
   position: 'relative',
-  height: '60vh',
+  height: '60vh'
 })
 
 const Layout = styled('div', {
   width: '100%',
   padding: isPortrait ? '15% 0% 10% 5%' : '5% 0% 5% 10%',
-  paddingtop: '50px',
+  paddingTop: '50px'
 })
 
 const Title = styled('p', {
   color: '#795548',
   width: '100%',
   fontSize: isPortrait ? '2.5em' : '3.5em',
+  fontFamily: 'Great Vibes, cursive',
   margin: 0,
-  fontWeight: '500',
+  fontWeight: '500'
 })
 
 const ButtonGroup = styled('div', {
   width: '100%',
   textAlign: 'center',
-  paddingBottom: isPortrait ? '10%' : '5%',
+  paddingBottom: isPortrait ? '10%' : '5%'
 })
 
 const LinkShareButton = styled(Button, {
@@ -48,29 +50,29 @@ const LinkShareButton = styled(Button, {
   '&:hover': {
     backgroundColor: '#9fcbed !important',
     borderColor: '#9fcbed !important',
-    color: '#ffffff !important',
+    color: '#ffffff !important'
   },
   '&:focus': {
     backgroundColor: '#9fcbed !important',
     borderColor: '#9fcbed !important',
-    color: '#ffffff !important',
-  },
+    color: '#ffffff !important'
+  }
 })
 
-const WhatsAppButton = styled(Button, {
-  background: '#25d366', // WhatsApp green color
-  borderColor: '#25d366',
+const EmailButton = styled(Button, {
+  background: '#007bff', // Email button color
+  borderColor: '#007bff',
   color: '#ffffff',
   '&:hover': {
     backgroundColor: '#128C7E !important', // Darker shade on hover
     borderColor: '#128C7E !important',
-    color: '#ffffff !important',
+    color: '#ffffff !important'
   },
   '&:focus': {
     backgroundColor: '#128C7E !important',
     borderColor: '#128C7E !important',
-    color: '#ffffff !important',
-  },
+    color: '#ffffff !important'
+  }
 })
 
 type ShareProps = {
@@ -86,11 +88,10 @@ const Share = ({ config }: ShareProps) => {
 
   useEffect(() => {
     if (shareCount !== 0) {
-      // Replace Kakao share logic with WhatsApp share logic
-      const whatsappLink = `https://api.whatsapp.com/send?phone=601128655756`
-      window.open(whatsappLink, '_blank')
+      const mailtoLink = `mailto:teysuizer1998@gmail.com`
+      window.open(mailtoLink, '_blank')
     }
-  }, [config, shareCount])
+  }, [shareCount])
 
   return (
     <Section>
@@ -98,13 +99,13 @@ const Share = ({ config }: ShareProps) => {
         <Title>Share and contact us about this joyful event!</Title>
       </Layout>
       <ButtonGroup>
-        <WhatsAppButton
+        <EmailButton
           style={{ margin: 8 }}
           size="large"
           onClick={() => setShareCount(shareCount + 1)}
         >
-          Contact us through WhatsApp
-        </WhatsAppButton>
+          Contact us through Email
+        </EmailButton>
         <CopyToClipboard text={config.url}>
           <LinkShareButton
             style={{ margin: 8 }}

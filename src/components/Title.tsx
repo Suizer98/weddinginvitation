@@ -1,6 +1,7 @@
 import { styled } from '@stitches/react'
 import Confetti from 'react-confetti'
 import { useWindowSize } from 'react-use'
+
 import { ConfigsType } from '../configs'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
@@ -9,7 +10,7 @@ const Section = styled('section', {
   height: '100vh',
   background: '#DADADA',
   overflow: 'hidden',
-  position: 'relative',
+  position: 'relative'
 })
 
 const Layout = styled('div', {
@@ -17,7 +18,7 @@ const Layout = styled('div', {
   color: '#5D4037',
   textAlign: 'center',
   marginTop: '3.5%',
-  animation: 'fadein 2.5s',
+  animation: 'fadein 2.5s'
 })
 
 const TitleLayout = styled('p', {
@@ -25,7 +26,7 @@ const TitleLayout = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
-  fontFamily: 'Great Vibes, cursive',
+  fontFamily: 'Great Vibes, cursive'
 })
 
 const SubTitleLayout = styled('p', {
@@ -33,7 +34,7 @@ const SubTitleLayout = styled('p', {
   fontSize: isPortrait ? '1.2em' : '2.5em',
   margin: '24px 0',
   fontWeight: '300',
-  fontFamily: 'Great Vibes, cursive',
+  fontFamily: 'Great Vibes, cursive'
 })
 
 const ImageLayout = styled('div', {
@@ -42,11 +43,11 @@ const ImageLayout = styled('div', {
   background: '#DADADA',
   top: '10px',
   textAlign: 'center',
-  position: 'bottom',
+  position: 'bottom'
 })
 
 const Image = styled('img', {
-  width: isPortrait ? '100%' : '40%',
+  width: isPortrait ? '100%' : '40%'
 })
 
 type TitleProps = {
@@ -83,10 +84,7 @@ const Title = ({ config, showDetails }: TitleProps) => {
           </SubTitleLayout> */}
         </Layout>
         <ImageLayout>
-          <Image
-            src={config.titleImage}
-            alt="Wedding Invitation Title Picutre"
-          />
+          <Image src={config.titleImage} alt="Wedding Invitation Title Picutre" />
         </ImageLayout>
       </Section>
     </>

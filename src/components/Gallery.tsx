@@ -1,15 +1,16 @@
-import { useRef, useState } from 'react'
 import { styled } from '@stitches/react'
 import { Col, Image, Row } from 'antd'
-import useOnScreen from '../hooks/useOnScreen'
+import { useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
+
 import { ConfigsType } from '../configs'
+import useOnScreen from '../hooks/useOnScreen'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '20% 0% 15% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '20% 0% 15% 5%' : '5% 0% 5% 10%'
 })
 
 const Title = styled('p', {
@@ -18,6 +19,7 @@ const Title = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
+  fontFamily: 'Great Vibes'
 })
 
 type GalleryProps = {
@@ -41,27 +43,23 @@ const Gallery = ({ config }: GalleryProps) => {
         background: onScreen ? '#212121' : '#EFEBE9',
         overflow: 'hidden',
         position: 'relative',
-        transition: 'background 1s ease-in',
+        transition: 'background 1s ease-in'
       }}
     >
       <Layout>
-        <Title>Our Beautiful Moments</Title>
+        <Title>Our Beautiful Moments...</Title>
       </Layout>
       <Row gutter={[16, 16]}>
         <Image.PreviewGroup
           preview={{
             visible: previewVisible,
             onVisibleChange: (visible) => setPreviewVisible(visible),
-            current: previewIndex,
+            current: previewIndex
           }}
         >
           {config.galleryImages.map((image, index) => (
             <Col key={index} span={isPortrait ? 6 : 3}>
-              <Image
-                key={index}
-                src={image}
-                width={isPortrait ? width / 4 - 10 : width / 8 - 10}
-              />
+              <Image key={index} src={image} width={isPortrait ? width / 4 - 10 : width / 8 - 10} />
             </Col>
           ))}
         </Image.PreviewGroup>

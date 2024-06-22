@@ -1,32 +1,33 @@
-import { useRef, useEffect } from 'react'
 import { styled } from '@stitches/react'
-import { ConfigsType } from '../configs'
-import 'ol/ol.css'
+import { message } from 'antd'
 import { Map, View } from 'ol'
-import * as olProj from 'ol/proj'
-import Overlay from 'ol/Overlay'
-import Point from 'ol/geom/Point'
 import Feature from 'ol/Feature'
-import TileLayer from 'ol/layer/Tile'
-import OSM from 'ol/source/OSM'
-import VectorLayer from 'ol/layer/Vector'
-import VectorSource from 'ol/source/Vector'
-import { Style, Fill, Stroke, Circle } from 'ol/style'
+import Overlay from 'ol/Overlay'
 import { defaults } from 'ol/control'
 import Control from 'ol/control/Control'
-import { message } from 'antd'
+import Point from 'ol/geom/Point'
+import TileLayer from 'ol/layer/Tile'
+import VectorLayer from 'ol/layer/Vector'
+import 'ol/ol.css'
+import * as olProj from 'ol/proj'
+import OSM from 'ol/source/OSM'
+import VectorSource from 'ol/source/Vector'
+import { Circle, Fill, Stroke, Style } from 'ol/style'
+import { useEffect, useRef } from 'react'
+
+import { ConfigsType } from '../configs'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
-  position: 'relative',
+  position: 'relative'
 })
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '20% 0% 15% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '20% 0% 15% 5%' : '5% 0% 5% 10%'
 })
 
 const Title = styled('p', {
@@ -35,24 +36,26 @@ const Title = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
+  fontFamily: 'Great Vibes, cursive'
 })
 
 const SubTitle = styled('p', {
   color: '#795548',
   width: '100%',
   fontSize: isPortrait ? '1.2em' : '2em',
+  fontFamily: 'Bad Script',
   margin: '24px 0',
   fontWeight: '300',
   lineHeight: 1.8,
   span: {
-    color: 'red',
-  },
+    color: 'red'
+  }
 })
 
 const MapWrapper = styled('div', {
   width: '100%',
   height: '400px', // Adjust the height as needed
-  marginTop: '20px',
+  marginTop: '20px'
 })
 
 type LocationProps = {
@@ -79,12 +82,12 @@ const Location = ({ config }: LocationProps) => {
         target: mapRef.current,
         layers: [
           new TileLayer({
-            source: new OSM(),
-          }),
+            source: new OSM()
+          })
         ],
         view: new View({
           center: olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
-          zoom: 15,
+          zoom: 15
         }),
         controls: defaults().extend([
           // Add Recenter Button Control
@@ -97,22 +100,18 @@ const Location = ({ config }: LocationProps) => {
               button.style.right = '10px'
               button.addEventListener('click', () => {
                 const view = map.getView()
-                view.setCenter(
-                  olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
-                )
+                view.setCenter(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
                 view.setZoom(15)
               })
               return button
-            })(),
-          }),
-        ]),
+            })()
+          })
+        ])
       })
 
       // Add Marker with a bigger point
       const marker = new Feature({
-        geometry: new Point(
-          olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
-        ),
+        geometry: new Point(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
       })
 
       // Define the style for the marker
@@ -120,21 +119,21 @@ const Location = ({ config }: LocationProps) => {
         image: new Circle({
           radius: 10, // Adjust the radius to make the point bigger
           fill: new Fill({
-            color: 'rgba(255, 0, 0, 0.7)', // Red color with some transparency
+            color: 'rgba(255, 0, 0, 0.7)' // Red color with some transparency
           }),
           stroke: new Stroke({
             color: 'rgba(255, 0, 0, 0.9)', // Red color with more transparency for the border
-            width: 2,
-          }),
-        }),
+            width: 2
+          })
+        })
       })
 
       marker.setStyle(markerStyle)
 
       const markerLayer = new VectorLayer({
         source: new VectorSource({
-          features: [marker],
-        }),
+          features: [marker]
+        })
       })
 
       map.addLayer(markerLayer)
@@ -144,32 +143,22 @@ const Location = ({ config }: LocationProps) => {
         element: popupRef.current!,
         positioning: 'bottom-center',
         stopEvent: false,
-        offset: [0, -10],
+        offset: [0, -10]
       })
 
       map.addOverlay(popup)
-      popup.setPosition(
-        olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
-      )
+      popup.setPosition(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
 
       // Show Popup when clicking on the marker
       map.on('click', (event) => {
-        const feature = map.forEachFeatureAtPixel(
-          event.pixel,
-          (feature) => feature,
-        )
+        const feature = map.forEachFeatureAtPixel(event.pixel, (feature) => feature)
 
-        if (
-          feature instanceof Feature &&
-          feature.getGeometry() instanceof Point
-        ) {
+        if (feature instanceof Feature && feature.getGeometry() instanceof Point) {
           // Copy the address to clipboard when clicking on the red dot
           popup.setPosition(undefined)
           copyToClipboard(config.weddingAddress)
         } else {
-          popup.setPosition(
-            olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
-          )
+          popup.setPosition(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
         }
       })
 
@@ -202,7 +191,7 @@ const Location = ({ config }: LocationProps) => {
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.8)',
             padding: '10px',
-            borderRadius: '5px',
+            borderRadius: '5px'
           }}
         >
           <p>We are here!</p>

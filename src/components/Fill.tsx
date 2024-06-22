@@ -1,15 +1,16 @@
-import { useRef } from 'react'
 import { styled } from '@stitches/react'
-import useOnScreen from '../hooks/useOnScreen'
-import { ConfigsType } from '../configs'
-import { message, Form, Input, Button } from 'antd'
+import { Button, Form, Input, message } from 'antd'
 import axios from 'axios'
+import { useRef } from 'react'
+
+import { ConfigsType } from '../configs'
+import useOnScreen from '../hooks/useOnScreen'
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '15% 0% 15% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '15% 0% 15% 5%' : '5% 0% 5% 10%'
 })
 
 const Title = styled('p', {
@@ -18,15 +19,17 @@ const Title = styled('p', {
   fontSize: isPortrait ? '2.5em' : '3.5em',
   margin: 0,
   fontWeight: '500',
+  fontFamily: 'Great Vibes, cursive'
 })
 
 const SubTitle = styled('p', {
   color: '#795548',
   width: '100%',
   fontSize: isPortrait ? '1.2em' : '2em',
+  fontFamily: 'Bad Script',
   margin: '24px 0',
-  fontWeight: '300',
-  lineHeight: 1.8,
+  fontWeight: '400',
+  lineHeight: 1.8
 })
 
 type FillProps = {
@@ -45,13 +48,13 @@ const Fill = ({ config }: FillProps) => {
         {
           name: values.name,
           pax: values.numberOfPax,
-          allergic: values.allergic,
+          allergic: values.allergic
         },
         {
           headers: {
-            'Content-Type': 'application/json',
-          },
-        },
+            'Content-Type': 'application/json'
+          }
+        }
       )
 
       if (response.status === 200) {
@@ -78,7 +81,7 @@ const Fill = ({ config }: FillProps) => {
         background: onScreen ? '#e3b7a6' : '#DADADA',
         overflow: 'hidden',
         position: 'relative',
-        transition: 'background 1s ease-in',
+        transition: 'background 1s ease-in'
       }}
     >
       <Layout>
@@ -88,21 +91,33 @@ const Fill = ({ config }: FillProps) => {
           <Form.Item
             label="Name"
             name="name"
-            style={{ width: isPortrait ? '90%' : '35%' }}
+            style={{
+              width: isPortrait ? '90%' : '35%',
+              fontFamily: 'Bad Script',
+              fontWeight: 'bold'
+            }}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Number of Pax"
             name="numberOfPax"
-            style={{ width: isPortrait ? '90%' : '35%' }}
+            style={{
+              width: isPortrait ? '90%' : '35%',
+              fontFamily: 'Bad Script',
+              fontWeight: 'bold'
+            }}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Allergic"
             name="allergic"
-            style={{ width: isPortrait ? '90%' : '35%' }}
+            style={{
+              width: isPortrait ? '90%' : '35%',
+              fontFamily: 'Bad Script',
+              fontWeight: 'bold'
+            }}
           >
             <Input />
           </Form.Item>

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import { Button, Layout } from 'antd'
+import React, { useEffect, useState } from 'react'
+
+import Fill from './components/Fill'
 import Gallery from './components/Gallery'
 import Greeting from './components/Greeting'
-import TitleLayout from './components/Title'
 import Location from './components/Location'
+import Share from './components/Share'
+import TitleLayout from './components/Title'
 // import CongratulatoryMoney from './components/CongratulatoryMoney';
 import Configs from './configs'
-import Share from './components/Share'
-import Fill from './components/Fill'
-import { Layout, Button } from 'antd'
 
 const { Footer } = Layout
 
@@ -73,7 +74,7 @@ function App() {
     position: 'fixed',
     bottom: 0,
     width: '100%',
-    transition: 'opacity 0.5s', // Apply a transition effect to opacity
+    transition: 'opacity 0.5s' // Apply a transition effect to opacity
   }
 
   return (
@@ -91,16 +92,14 @@ function App() {
       )}
       <div style={{ height: '70px' }}></div>
       <div>
-        <Footer
-          style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}
-        >
+        <Footer style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}>
           {buttonVisible && (
             <div>
               <Button
                 style={{
                   background: '#F5838F',
                   borderColor: '#F5838F',
-                  opacity: showDetails ? 0 : 1, // Adjust opacity based on showDetails
+                  opacity: showDetails ? 0 : 1 // Adjust opacity based on showDetails
                 }}
                 onClick={handleShowDetails}
                 type="primary"
