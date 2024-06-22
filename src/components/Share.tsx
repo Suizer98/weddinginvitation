@@ -24,8 +24,13 @@ const Section = styled('section', {
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '15% 0% 10% 5%' : '5% 0% 5% 10%',
-  paddingTop: '50px'
+  padding: isPortrait ? '15% 0% 10% 0%' : '5% 0% 5% 0%',
+  paddingTop: '50px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center'
 })
 
 const Title = styled('p', {

@@ -74,7 +74,8 @@ function App() {
     position: 'fixed',
     bottom: 0,
     width: '100%',
-    transition: 'opacity 0.5s' // Apply a transition effect to opacity
+    transition: 'opacity 0.5s', // Apply a transition effect to opacity
+    fontFamily: 'Bad Script'
   }
 
   return (
@@ -92,7 +93,13 @@ function App() {
       )}
       <div style={{ height: '70px' }}></div>
       <div>
-        <Footer style={showDetails ? { ...footerStyles, opacity: 0.6 } : footerStyles}>
+        <Footer
+          style={
+            showDetails
+              ? { ...footerStyles, opacity: 0.6, fontFamily: 'Great Vibes, cursive' }
+              : footerStyles
+          }
+        >
           {buttonVisible && (
             <div>
               <Button
