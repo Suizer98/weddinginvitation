@@ -4,11 +4,11 @@ Tech Stack: Netlify, Vite, React TS, Ant Design, Render container (previously He
 
 ![Tech stacks](https://skillicons.dev/icons?i=vite,ts,react,fastapi,python,docker,ubuntu,bash,heroku,netlify,postgres)
 
-Frontend: https://suizerlyciawedding.netlify.app/ (Shut down when inactive)
+Frontend: https://suizerlyciawedding.netlify.app/
 
 Backend: Render free instance Docker web service (Shut down when inactive)
 
-Database: Render free tier PostgreSQL
+Database: Render free tier PostgreSQL (Shut down when inactive)
 
 ## Local Development
 
