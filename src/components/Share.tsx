@@ -52,6 +52,7 @@ const LinkShareButton = styled(Button, {
   background: '#53acee',
   borderColor: '#53acee',
   color: '#ffffff',
+  fontFamily: 'Bad Script',
   '&:hover': {
     backgroundColor: '#9fcbed !important',
     borderColor: '#9fcbed !important',
@@ -68,6 +69,7 @@ const EmailButton = styled(Button, {
   background: '#007bff', // Email button color
   borderColor: '#007bff',
   color: '#ffffff',
+  fontFamily: 'Bad Script',
   '&:hover': {
     backgroundColor: '#128C7E !important', // Darker shade on hover
     borderColor: '#128C7E !important',

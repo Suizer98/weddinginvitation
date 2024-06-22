@@ -44,7 +44,7 @@ const FormContainer = styled(Form, {
   alignItems: 'center',
   justifyContent: 'center',
   padding: '20px',
-  backgroundColor: 'white',
+  backgroundColor: 'rgba(255, 255, 255, 0.6)',
   borderRadius: '10px',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
 })
