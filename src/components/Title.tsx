@@ -4,50 +4,51 @@ import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
 
-const isPortrait = window.matchMedia('(orientation: portrait)').matches
-
 const Section = styled('section', {
-  height: '100vh',
+  height: '100vh', // Ensure the section takes the full viewport height
   background: '#DADADA',
   overflow: 'hidden',
-  position: 'relative'
+  position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+})
+
+const BackgroundImage = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center 75%',
+  // filter: 'blur(8px)',
+  zIndex: 0
 })
 
 const Layout = styled('div', {
-  width: '100%',
   color: '#5D4037',
   textAlign: 'center',
-  marginTop: '3.5%',
-  animation: 'fadein 2.5s'
+  animation: 'fadein 2.5s',
+  background: 'rgba(255, 255, 255, 0.7)',
+  padding: '1em 2em',
+  borderRadius: '8px',
+  zIndex: 1,
+  position: 'relative'
 })
 
 const TitleLayout = styled('p', {
-  width: '100%',
-  fontSize: isPortrait ? '2.5em' : '3.5em',
+  fontSize: '3.5em',
   margin: 0,
   fontWeight: '500',
   fontFamily: 'Great Vibes, cursive'
 })
 
 const SubTitleLayout = styled('p', {
-  width: '100%',
-  fontSize: isPortrait ? '1.2em' : '2.5em',
+  fontSize: '2.5em',
   margin: '24px 0',
   fontWeight: '300',
   fontFamily: 'Great Vibes, cursive'
-})
-
-const ImageLayout = styled('div', {
-  width: '100%',
-  height: '70%',
-  background: '#DADADA',
-  top: '10px',
-  textAlign: 'center',
-  position: 'bottom'
-})
-
-const Image = styled('img', {
-  width: isPortrait ? '100%' : '40%'
 })
 
 type TitleProps = {
@@ -72,20 +73,13 @@ const Title = ({ config, showDetails }: TitleProps) => {
         />
       )}
       <Section>
+        <BackgroundImage style={{ backgroundImage: `url(${config.titleImage})` }} />
         <Layout>
           <SubTitleLayout>Wedding Invitation</SubTitleLayout>
           <TitleLayout>
             {config.groom.name} &amp; {config.bride.name}
           </TitleLayout>
-          {/* <SubTitleLayout>
-            {config.weddingDate}
-            <br />
-            {config.weddingLocation}
-          </SubTitleLayout> */}
         </Layout>
-        <ImageLayout>
-          <Image src={config.titleImage} alt="Wedding Invitation Title Picutre" />
-        </ImageLayout>
       </Section>
     </>
   )

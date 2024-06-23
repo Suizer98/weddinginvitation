@@ -62,7 +62,8 @@ const LinkShareButton = styled(Button, {
     backgroundColor: '#9fcbed !important',
     borderColor: '#9fcbed !important',
     color: '#ffffff !important'
-  }
+  },
+  fontSize: 20
 })
 
 const EmailButton = styled(Button, {
@@ -79,7 +80,8 @@ const EmailButton = styled(Button, {
     backgroundColor: '#128C7E !important',
     borderColor: '#128C7E !important',
     color: '#ffffff !important'
-  }
+  },
+  fontSize: 20
 })
 
 type ShareProps = {

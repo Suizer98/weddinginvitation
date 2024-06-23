@@ -54,12 +54,13 @@ const FormItem = styled(Form.Item, {
   marginBottom: '16px',
   fontFamily: 'Bad Script',
   fontWeight: 'bold',
-  textAlign: 'left'
+  textAlign: 'left',
+  fontSize: 30
 })
 
 const StyledButton = styled(Button, {
-  width: '100%',
-  fontSize: '1em'
+  width: '30%',
+  fontSize: 20
 })
 
 type FillProps = {
@@ -130,7 +131,9 @@ const Fill = ({ config }: FillProps) => {
           <FormItem label="Allergic" name="allergic">
             <Input />
           </FormItem>
-          <FormItem>
+          <FormItem style={{ textAlign: 'center' }}>
+            {' '}
+            {/* Center the button */}
             <StyledButton type="primary" htmlType="submit">
               Submit
             </StyledButton>

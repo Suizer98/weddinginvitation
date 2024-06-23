@@ -32,7 +32,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "format": "prettier --write \"src/**/*.+(ts|tsx|js|jsx|json|css|scss|md)\"",
+    "format": "prettier --cache --write \"src/**/*.+(ts|tsx|js|jsx|json|css|scss|md)\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

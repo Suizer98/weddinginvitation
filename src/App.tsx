@@ -49,7 +49,7 @@ function App() {
         const start = window.scrollY
         const end = greetingSection.offsetTop
         const distance = end - start
-        const duration = 1000 // Adjust the duration (in milliseconds)
+        const duration = 1000
         const startTime = performance.now()
 
         const step = (time: any) => {
@@ -74,7 +74,7 @@ function App() {
     position: 'fixed',
     bottom: 0,
     width: '100%',
-    transition: 'opacity 0.5s', // Apply a transition effect to opacity
+    transition: 'opacity 0.5s',
     fontFamily: 'Bad Script'
   }
 
@@ -91,12 +91,11 @@ function App() {
           <Share config={Configs} />
         </>
       )}
-      <div style={{ height: '70px' }}></div>
       <div>
         <Footer
           style={
             showDetails
-              ? { ...footerStyles, opacity: 0.6, fontFamily: 'Great Vibes, cursive' }
+              ? { ...footerStyles, opacity: 0.6, fontFamily: 'Great Vibes, cursive', fontSize: 20 }
               : footerStyles
           }
         >
@@ -106,7 +105,9 @@ function App() {
                 style={{
                   background: '#F5838F',
                   borderColor: '#F5838F',
-                  opacity: showDetails ? 0 : 1 // Adjust opacity based on showDetails
+                  opacity: showDetails ? 0 : 1,
+                  padding: '0px 30px',
+                  fontSize: 20
                 }}
                 onClick={handleShowDetails}
                 type="primary"

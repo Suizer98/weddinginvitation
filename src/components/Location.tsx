@@ -59,7 +59,7 @@ const SubTitle = styled('p', {
 
 const MapWrapper = styled('div', {
   width: '100%',
-  height: '400px', // Adjust the height as needed
+  height: '400px',
   marginTop: '20px'
 })
 
