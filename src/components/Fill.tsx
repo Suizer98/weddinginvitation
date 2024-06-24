@@ -30,7 +30,7 @@ const Title = styled('p', {
 const SubTitle = styled('p', {
   color: '#795548',
   width: '100%',
-  fontSize: isPortrait ? '1.5em' : '2em',
+  fontSize: isPortrait ? '1.2em' : '2em',
   fontFamily: 'Bad Script',
   margin: '24px 0',
   fontWeight: '400',
@@ -72,7 +72,20 @@ const Fill = ({ config }: FillProps) => {
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
   const [form] = Form.useForm()
 
+  const TELEGRAM_TOKEN = process.env.REACT_APP_TELEGRAM_TOKEN
+  const TELEGRAM_CHAT_ID = process.env.REACT_APP_TELEGRAM_CHAT_ID
+
   const onFinish = async (values: any) => {
+    // Notify via Telegram regardless of backend response
+    try {
+      await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        chat_id: TELEGRAM_CHAT_ID,
+        text: `New submission:\nName: ${values.name}\nNumber of Pax: ${values.numberOfPax}\nAllergic: ${values.allergic}`
+      })
+    } catch (telegramError) {
+      console.error('Failed to send message to Telegram', telegramError)
+    }
+
     try {
       const response = await axios.post(
         config.backendURL,
@@ -128,7 +141,7 @@ const Fill = ({ config }: FillProps) => {
           <FormItem label="Number of Pax" name="numberOfPax">
             <Input />
           </FormItem>
-          <FormItem label="Allergic" name="allergic">
+          <FormItem label="Vegeterian" name="allergic">
             <Input />
           </FormItem>
           <FormItem style={{ textAlign: 'center' }}>

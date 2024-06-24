@@ -8,6 +8,7 @@ import GalleryPhoto3 from './resources/photo3.jpg'
 import GalleryPhoto4 from './resources/photo4.jpg'
 import GalleryPhoto5 from './resources/photo5.jpg'
 import GalleryPhoto6 from './resources/photo6.jpg'
+import GalleryPhoto7 from './resources/photo7.jpg'
 import TitleImage from './resources/ring.jpg'
 
 const Configs: ConfigsType = {
@@ -41,7 +42,8 @@ const Configs: ConfigsType = {
     GalleryPhoto3,
     GalleryPhoto4,
     GalleryPhoto5,
-    GalleryPhoto6
+    GalleryPhoto6,
+    GalleryPhoto7
   ],
   music: Music,
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'

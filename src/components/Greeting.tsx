@@ -8,7 +8,37 @@ const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
 const Layout = styled('div', {
   width: '100%',
+  display: 'flex',
+  flexDirection: isPortrait ? 'column' : 'row',
+  alignItems: 'center',
   padding: isPortrait ? '20% 0% 15% 5%' : '5% 0% 5% 10%'
+})
+
+const TextContainer = styled('div', {
+  width: isPortrait ? '100%' : '60%'
+})
+
+const ImageContainer = styled('div', {
+  width: '40%',
+  display: isPortrait ? 'none' : 'block',
+  textAlign: 'right',
+  paddingRight: '5%',
+  opacity: 0.8
+})
+
+const Image = styled('img', {
+  width: '80%',
+  borderRadius: '30%',
+  boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+})
+
+const BubbleImage = styled('img', {
+  position: 'absolute',
+  width: '25%',
+  height: 'auto',
+  bottom: '5%',
+  borderRadius: '50%',
+  opacity: 0.8
 })
 
 const Title = styled('p', {
@@ -52,28 +82,36 @@ const Greeting = ({ id, config }: GreetingProps) => {
       }}
     >
       <Layout>
-        <Title>We're Getting Married</Title>
-        <SubTitle>
-          {config.bride.name}, born in February,
-          <br />
-          {config.groom.name}, born in September,
-          <br />
-          <br />
-          Two people with different interests and values
-          <br />
-          Have become alike through love
-          <br />
-          And are about to embark on the journey of life together.
-          <br />
-          <br />
-          With warm encouragement and blessings,
-          <br />
-          you are welcome to illuminate the place of our new start.
-          <br />
-          <br />
-          Scroll down to see the love story of {config.groom.name} & {config.bride.name}...
-          <br />
-        </SubTitle>
+        <TextContainer>
+          <Title>We're Getting Married</Title>
+          <SubTitle>
+            {config.bride.name}, born in February,
+            <br />
+            {config.groom.name}, born in September,
+            <br />
+            <br />
+            Two people with different interests and values
+            <br />
+            Have become alike through love
+            <br />
+            And are about to embark on the journey of life together.
+            <br />
+            <br />
+            With warm encouragement and blessings,
+            <br />
+            you are welcome to illuminate the place of our new start.
+            <br />
+            <br />
+            Scroll down to see the love story of {config.groom.name} & {config.bride.name}...
+            <br />
+          </SubTitle>
+        </TextContainer>
+        {!isPortrait && (
+          <ImageContainer>
+            <Image src={config.galleryImages[6]} alt="Romantic decoration" />
+          </ImageContainer>
+        )}
+        {isPortrait && <BubbleImage src={config.galleryImages[6]} alt="Light floating bubble" />}
       </Layout>
     </section>
   )
