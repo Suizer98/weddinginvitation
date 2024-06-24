@@ -64,7 +64,7 @@ const Title = ({ config, showDetails }: TitleProps) => {
   useEffect(() => {
     if (showDetails) {
       setExtraConfetti(true)
-      setTimeout(() => setExtraConfetti(false), 3000) // Show extra confetti for 3 seconds
+      setTimeout(() => setExtraConfetti(false), 5000)
     }
   }, [showDetails])
 
@@ -85,7 +85,7 @@ const Title = ({ config, showDetails }: TitleProps) => {
         <Confetti
           width={width}
           height={height}
-          numberOfPieces={300}
+          numberOfPieces={350}
           initialVelocityX={{ min: -50, max: 50 }}
           initialVelocityY={{ min: -50, max: 50 }}
           recycle={false}
