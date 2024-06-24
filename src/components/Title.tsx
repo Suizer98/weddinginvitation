@@ -1,4 +1,5 @@
 import { styled } from '@stitches/react'
+import React, { useEffect, useState } from 'react'
 import Confetti from 'react-confetti'
 import { useWindowSize } from 'react-use'
 
@@ -58,6 +59,14 @@ type TitleProps = {
 
 const Title = ({ config, showDetails }: TitleProps) => {
   const { width, height } = useWindowSize()
+  const [extraConfetti, setExtraConfetti] = useState(false)
+
+  useEffect(() => {
+    if (showDetails) {
+      setExtraConfetti(true)
+      setTimeout(() => setExtraConfetti(false), 3000) // Show extra confetti for 3 seconds
+    }
+  }, [showDetails])
 
   return (
     <>
@@ -69,6 +78,17 @@ const Title = ({ config, showDetails }: TitleProps) => {
           gravity={0.05}
           colors={['#FFCDD2', '#F8BBD0', '#D1C4E9', '#F5838F']}
           recycle={true}
+          style={{ position: 'fixed' }}
+        />
+      )}
+      {extraConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={300}
+          initialVelocityX={{ min: -50, max: 50 }}
+          initialVelocityY={{ min: -50, max: 50 }}
+          recycle={false}
           style={{ position: 'fixed' }}
         />
       )}

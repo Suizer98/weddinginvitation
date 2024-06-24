@@ -30,7 +30,7 @@ const Title = styled('p', {
 const SubTitle = styled('p', {
   color: '#795548',
   width: '100%',
-  fontSize: isPortrait ? '1.2em' : '2em',
+  fontSize: isPortrait ? '1.5em' : '2em',
   fontFamily: 'Bad Script',
   margin: '24px 0',
   fontWeight: '400',
