@@ -34,7 +34,7 @@ const Image = styled('img', {
 
 const BubbleImage = styled('img', {
   position: 'absolute',
-  width: '25%',
+  width: '30%',
   height: 'auto',
   bottom: '5%',
   borderRadius: '50%',
