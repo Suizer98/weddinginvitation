@@ -41,6 +41,14 @@ const BubbleImage = styled('img', {
   opacity: 0.8
 })
 
+const RedSpan = styled('span', {
+  color: 'red'
+})
+
+const BlueSpan = styled('span', {
+  color: 'blue'
+})
+
 const Title = styled('p', {
   color: '#795548',
   width: '100%',
@@ -85,9 +93,9 @@ const Greeting = ({ id, config }: GreetingProps) => {
         <TextContainer>
           <Title>We're Getting Married</Title>
           <SubTitle>
-            {config.bride.name}, born in February,
+            <RedSpan>{config.bride.name}</RedSpan>born in February,
             <br />
-            {config.groom.name}, born in September,
+            <BlueSpan>{config.groom.name}</BlurSpan>born in September,
             <br />
             <br />
             Two people with different interests and values
