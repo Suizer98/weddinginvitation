@@ -95,7 +95,7 @@ const Greeting = ({ id, config }: GreetingProps) => {
           <SubTitle>
             <RedSpan>{config.bride.name}</RedSpan>born in February,
             <br />
-            <BlueSpan>{config.groom.name}</BlurSpan>born in September,
+            <BlueSpan>{config.groom.name}</BlueSpan>born in September,
             <br />
             <br />
             Two people with different interests and values
