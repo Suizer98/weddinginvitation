@@ -36,6 +36,7 @@ const Configs: ConfigsType = {
   },
   titleImage: TitleImage,
   locationMapImage: LocationMapImage,
+  greetingImage: GalleryPhoto7,
   galleryImages: [
     GalleryPhoto1,
     GalleryPhoto2,
@@ -43,7 +44,6 @@ const Configs: ConfigsType = {
     GalleryPhoto4,
     GalleryPhoto5,
     GalleryPhoto6,
-    GalleryPhoto7
   ],
   music: Music,
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'
@@ -60,6 +60,7 @@ export type ConfigsType = {
   bride: Person
   titleImage: string
   locationMapImage: string
+  greetingImage: string
   galleryImages: string[]
   music: string
   backendURL: string
