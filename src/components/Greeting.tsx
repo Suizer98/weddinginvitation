@@ -49,6 +49,14 @@ const BlueSpan = styled('span', {
   color: 'blue'
 })
 
+const OrenSpan = styled('span', {
+  color: 'orange'
+})
+
+const BrownSpan = styled('span', {
+  color: 'brown'
+})
+
 const Title = styled('p', {
   color: '#795548',
   width: '100%',
@@ -93,9 +101,11 @@ const Greeting = ({ id, config }: GreetingProps) => {
         <TextContainer>
           <Title>We're Getting Married</Title>
           <SubTitle>
-            <RedSpan>{config.bride.name}</RedSpan>born in February,
+            <RedSpan>{config.bride.name}</RedSpan> born in 
+            <OrenSpan>February</OrenSpan>,
             <br />
-            <BlueSpan>{config.groom.name}</BlueSpan>born in September,
+            <BlueSpan>{config.groom.name}</BlueSpan> born in 
+            <BrownSpan>September</BrownSpan>,
             <br />
             <br />
             Two people with different interests and values
