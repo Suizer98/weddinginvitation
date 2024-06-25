@@ -131,7 +131,7 @@ const Greeting = ({ id, config }: GreetingProps) => {
             <Image src={config.greetingImage} alt="Romantic decoration" />
           </ImageContainer>
         )}
-        {isPortrait && <BubbleImage src={config.galleryImages[6]} alt="Light floating bubble" />}
+        {isPortrait && <BubbleImage src={config.greetingImage} alt="Light floating bubble" />}
       </Layout>
     </section>
   )
