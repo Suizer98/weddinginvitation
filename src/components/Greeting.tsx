@@ -34,15 +34,15 @@ const Image = styled('img', {
 
 const BubbleImage = styled('img', {
   position: 'absolute',
-  width: '30%',
+  width: '35%',
   height: 'auto',
   bottom: '5%',
-  borderRadius: '50%',
+  borderRadius: '30%',
   opacity: 0.8
 })
 
 const RedSpan = styled('span', {
-  color: '#FF6F61' // Pastel Red
+  color: '#FFC0CB' // Light Pink
 })
 
 const BlueSpan = styled('span', {
