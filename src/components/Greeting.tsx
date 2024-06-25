@@ -102,10 +102,10 @@ const Greeting = ({ id, config }: GreetingProps) => {
           <Title>We're Getting Married</Title>
           <SubTitle>
             <RedSpan>{config.bride.name}</RedSpan> born in 
-            <OrenSpan>February</OrenSpan>,
+            <OrenSpan> February</OrenSpan>,
             <br />
             <BlueSpan>{config.groom.name}</BlueSpan> born in 
-            <BrownSpan>September</BrownSpan>,
+            <BrownSpan> September</BrownSpan>,
             <br />
             <br />
             Two people with different interests and values
@@ -120,7 +120,8 @@ const Greeting = ({ id, config }: GreetingProps) => {
             you are welcome to illuminate the place of our new start.
             <br />
             <br />
-            Scroll down to see the love story of {config.groom.name} & {config.bride.name}...
+            Scroll down to see the love story of
+            <RedSpan> {config.bride.name}</RedSpan> & <BlueSpan>{config.groom.name}</BlueSpan>...
             <br />
           </SubTitle>
         </TextContainer>
