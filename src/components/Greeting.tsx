@@ -42,20 +42,21 @@ const BubbleImage = styled('img', {
 })
 
 const RedSpan = styled('span', {
-  color: 'red'
+  color: '#FF6F61' // Pastel Red
 })
 
 const BlueSpan = styled('span', {
-  color: 'blue'
+  color: '#6EC5E9' // Pastel Blue
 })
 
 const OrenSpan = styled('span', {
-  color: 'orange'
+  color: '#FFA726' // Soft Orange
 })
 
 const BrownSpan = styled('span', {
-  color: 'brown'
+  color: '#8D6E63' // Soft Brown
 })
+
 
 const Title = styled('p', {
   color: '#795548',
