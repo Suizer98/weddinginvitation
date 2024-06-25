@@ -42,7 +42,7 @@ const BubbleImage = styled('img', {
 })
 
 const RedSpan = styled('span', {
-  color: '#FFC0CB' // Light Pink
+  color: '#FF69B4' // Light Pink
 })
 
 const BlueSpan = styled('span', {
@@ -128,7 +128,7 @@ const Greeting = ({ id, config }: GreetingProps) => {
         </TextContainer>
         {!isPortrait && (
           <ImageContainer>
-            <Image src={config.galleryImages[6]} alt="Romantic decoration" />
+            <Image src={config.greetingImage} alt="Romantic decoration" />
           </ImageContainer>
         )}
         {isPortrait && <BubbleImage src={config.galleryImages[6]} alt="Light floating bubble" />}
