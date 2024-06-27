@@ -43,7 +43,7 @@ const Configs: ConfigsType = {
     GalleryPhoto3,
     GalleryPhoto4,
     GalleryPhoto5,
-    GalleryPhoto6,
+    GalleryPhoto6
   ],
   music: Music,
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'

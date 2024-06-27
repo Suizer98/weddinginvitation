@@ -10,8 +10,8 @@ import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector'
 import 'ol/ol.css'
 import * as olProj from 'ol/proj'
-import OSM from 'ol/source/OSM'
 import VectorSource from 'ol/source/Vector'
+import XYZ from 'ol/source/XYZ'
 import { Circle, Fill, Stroke, Style } from 'ol/style'
 import { useEffect, useRef } from 'react'
 
@@ -87,7 +87,10 @@ const Location = ({ config }: LocationProps) => {
         target: mapRef.current,
         layers: [
           new TileLayer({
-            source: new OSM()
+            source: new XYZ({
+              url: 'https://{1-4}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+              attributions: '&copy; <a href="https://www.carto.com/">CARTO</a>'
+            })
           })
         ],
         view: new View({

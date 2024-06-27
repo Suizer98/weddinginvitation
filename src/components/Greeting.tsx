@@ -57,7 +57,6 @@ const BrownSpan = styled('span', {
   color: '#8D6E63' // Soft Brown
 })
 
-
 const Title = styled('p', {
   color: '#795548',
   width: '100%',
@@ -102,10 +101,10 @@ const Greeting = ({ id, config }: GreetingProps) => {
         <TextContainer>
           <Title>We're Getting Married</Title>
           <SubTitle>
-            <RedSpan>{config.bride.name}</RedSpan> born in 
+            <RedSpan>{config.bride.name}</RedSpan> born in
             <OrenSpan> February</OrenSpan>,
             <br />
-            <BlueSpan>{config.groom.name}</BlueSpan> born in 
+            <BlueSpan>{config.groom.name}</BlueSpan> born in
             <BrownSpan> September</BrownSpan>,
             <br />
             <br />
