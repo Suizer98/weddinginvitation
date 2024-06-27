@@ -1,6 +1,6 @@
 import { styled } from '@stitches/react'
-import { Carousel, Image } from 'antd'
-import { useRef } from 'react'
+import { Carousel, Col, Image, Row } from 'antd'
+import { useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
@@ -34,6 +34,9 @@ const Gallery = ({ config }: GalleryProps) => {
   const ref = useRef<HTMLSelectElement>(null)
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
 
+  const [previewVisible, setPreviewVisible] = useState<boolean>(false)
+  const [previewIndex] = useState<number>(0)
+
   return (
     <section
       ref={ref}
@@ -45,21 +48,44 @@ const Gallery = ({ config }: GalleryProps) => {
     >
       <Layout>
         <Title>Our Precious Moments...</Title>
-        <Carousel
-          autoplay={true}
-          effect="fade"
-          arrows={true}
-          draggable={true}
-          slidesToShow={1}
-          centerMode={true}
-          speed={300}
-        >
-          {config.galleryImages.map((image, index) => (
-            <div key={index} onClick={() => {}}>
-              <Image src={image} width={isPortrait ? width * 0.5 : width * 0.2} preview={true} />
-            </div>
-          ))}
-        </Carousel>
+        {isPortrait && (
+          <Carousel
+            autoplay={true}
+            effect="fade"
+            arrows={true}
+            draggable={true}
+            slidesToShow={1}
+            centerMode={true}
+            speed={300}
+          >
+            {config.galleryImages.map((image, index) => (
+              <div key={index} onClick={() => {}}>
+                <Image src={image} width={isPortrait ? width * 0.7 : width * 0.2} preview={true} />
+              </div>
+            ))}
+          </Carousel>
+        )}
+        {!isPortrait && (
+          <Row gutter={[16, 16]}>
+            <Image.PreviewGroup
+              preview={{
+                visible: previewVisible,
+                onVisibleChange: (visible) => setPreviewVisible(visible),
+                current: previewIndex
+              }}
+            >
+              {config.galleryImages.map((image, index) => (
+                <Col key={index} span={isPortrait ? 6 : 3}>
+                  <Image
+                    key={index}
+                    src={image}
+                    width={isPortrait ? width / 4 - 10 : width / 8 - 10}
+                  />
+                </Col>
+              ))}
+            </Image.PreviewGroup>
+          </Row>
+        )}
       </Layout>
     </section>
   )
