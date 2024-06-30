@@ -98,7 +98,7 @@ const Greeting = ({ id, config }: GreetingProps) => {
             <br />
             <br />
             Scroll down to see the love story of
-            <RedSpan> {config.bride.name}</RedSpan> & <BlueSpan>{config.groom.name}</BlueSpan>...
+            <RedSpan> {config.bride.name}</RedSpan> & <BlueSpan>{config.groom.name}</BlueSpan>
             <br />
           </SubTitle>
         </TextContainer>

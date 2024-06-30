@@ -31,6 +31,7 @@ const Configs: ConfigsType = {
   weddingAddress: '8, Jln Adda 2, Adda Heights, 81100 Johor Bahru, Johor',
   groom: {
     name: 'Sui Zer',
+    mandarin: '绥泽',
     accountNumber: 'Bank: ***-***-******',
     fatherName: 'Father Name',
     fatherAccountNumber: 'Bank: ***-***-******',
@@ -39,6 +40,7 @@ const Configs: ConfigsType = {
   },
   bride: {
     name: 'Lycia',
+    mandarin: '丽萱',
     accountNumber: 'Bank: ***-***-******',
     fatherName: 'Father Name',
     fatherAccountNumber: 'Bank: ***-***-******',
@@ -93,6 +95,7 @@ export type ConfigsType = {
 
 type Person = {
   name: string
+  mandarin: string
   accountNumber: string
   fatherName?: string
   fatherAccountNumber?: string

@@ -102,7 +102,7 @@ const SongTitle = styled('p', {
   color: '#795548',
   fontFamily: 'Bad Script',
   fontSize: '2em',
-  margin: '10px 0 5px 0',
+  margin: '10px 0 10px 0',
   textAlign: 'center',
   '@media (max-width: 768px)': {
     fontSize: '1.5em',
@@ -114,7 +114,7 @@ const SongArtist = styled('p', {
   color: '#795548',
   fontFamily: 'Bad Script',
   fontSize: '1.5em',
-  margin: '5px 0',
+  margin: '10px 0 10px 0',
   textAlign: 'center',
   '@media (max-width: 768px)': {
     fontSize: '1.2em',

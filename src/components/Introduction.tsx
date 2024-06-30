@@ -93,7 +93,9 @@ const Introduction = ({ config }: IntroductionProps) => {
             alt="Groom"
             style={{ width: isPortrait ? '150px' : '250px' }}
           />
-          <Name>{config.groom.name}</Name>
+          <Name>
+            {config.groom.name} {config.groom.mandarin}
+          </Name>
         </Profile>
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
           <SubTitle>And The Bride</SubTitle>
@@ -102,7 +104,9 @@ const Introduction = ({ config }: IntroductionProps) => {
             alt="Bride"
             style={{ width: isPortrait ? '150px' : '250px' }}
           />
-          <Name>{config.bride.name}</Name>
+          <Name>
+            {config.bride.name} {config.bride.mandarin}
+          </Name>
         </Profile>
       </ProfileContainer>
     </Container>
