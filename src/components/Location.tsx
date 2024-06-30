@@ -12,7 +12,7 @@ import 'ol/ol.css'
 import * as olProj from 'ol/proj'
 import VectorSource from 'ol/source/Vector'
 import XYZ from 'ol/source/XYZ'
-import { Circle, Fill, Stroke, Style } from 'ol/style'
+import { Icon, Style } from 'ol/style'
 import { useEffect, useRef } from 'react'
 
 import { ConfigsType } from '../configs'
@@ -53,7 +53,7 @@ const SubTitle = styled('p', {
   fontWeight: '300',
   lineHeight: 1.8,
   span: {
-    color: 'red'
+    color: '#FF8D00'
   }
 })
 
@@ -124,15 +124,10 @@ const Location = ({ config }: LocationProps) => {
 
       // Define the style for the marker
       const markerStyle = new Style({
-        image: new Circle({
-          radius: 10, // Adjust the radius to make the point bigger
-          fill: new Fill({
-            color: 'rgba(255, 0, 0, 0.7)' // Red color with some transparency
-          }),
-          stroke: new Stroke({
-            color: 'rgba(255, 0, 0, 0.9)', // Red color with more transparency for the border
-            width: 2
-          })
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: '/marker.svg',
+          scale: 1.5
         })
       })
 
@@ -151,7 +146,7 @@ const Location = ({ config }: LocationProps) => {
         element: popupRef.current!,
         positioning: 'bottom-center',
         stopEvent: false,
-        offset: [0, -10]
+        offset: [0, -45]
       })
 
       map.addOverlay(popup)
@@ -183,12 +178,11 @@ const Location = ({ config }: LocationProps) => {
         <SubTitle>
           {config.weddingLocation}
           <br />
-          Address:
           <br />
           {config.weddingAddress}
           <br />
           <br />
-          Click on the <span>red dot</span> to copy address!
+          Click on the <span>marker</span> to copy address!
         </SubTitle>
         <MapWrapper
           ref={mapRef}
@@ -199,7 +193,9 @@ const Location = ({ config }: LocationProps) => {
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.8)',
             padding: '10px',
-            borderRadius: '5px'
+            borderRadius: '5px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            border: '1px solid rgba(0, 0, 0, 0.2)'
           }}
         >
           <p>We are here!</p>
