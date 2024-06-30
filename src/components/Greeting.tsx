@@ -54,7 +54,7 @@ const OrenSpan = styled('span', {
 })
 
 const BrownSpan = styled('span', {
-  color: '#8D6E63' // Soft Brown
+  color: '#CC6A0E' // Soft Brown
 })
 
 const Title = styled('p', {
