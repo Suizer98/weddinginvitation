@@ -87,7 +87,9 @@ type MusicPlayerProps = {
 const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const playerRef = useRef<AudioPlayer>(null)
-  const [musicIndex, setMusicIndex] = useState(0)
+  const [musicIndex, setMusicIndex] = useState(() =>
+    Math.floor(Math.random() * config.music.length)
+  )
   const musicDetail: MusicDetail = config.music[musicIndex]
 
   useEffect(() => {

@@ -2,15 +2,21 @@ import LocationMapImage from './resources/LocationMap.png'
 // @ts-ignore
 import Music2 from './resources/music2.mp3'
 // @ts-ignore
-import Music from './resources/music.mp3'
+import Music3 from './resources/music3.mp3'
 // @ts-ignore
+import Music4 from './resources/music4.mp3'
+// @ts-ignore
+import Music from './resources/music.mp3'
 import GalleryPhoto1 from './resources/photo1.jpg'
 import GalleryPhoto2 from './resources/photo2.jpg'
 import GalleryPhoto3 from './resources/photo3.jpg'
 import GalleryPhoto4 from './resources/photo4.jpg'
 import GalleryPhoto5 from './resources/photo5.jpg'
 import GalleryPhoto6 from './resources/photo6.jpg'
-import GalleryPhoto7 from './resources/photo7.jpg'
+import G1 from './resources/photo8.jpg'
+import G2 from './resources/photo9.jpg'
+// @ts-ignore
+import GalleryPhotoGreeting from './resources/photoGreeting.jpg'
 import TitleImage from './resources/ring.jpg'
 
 const Configs: ConfigsType = {
@@ -38,7 +44,8 @@ const Configs: ConfigsType = {
   },
   titleImage: TitleImage,
   locationMapImage: LocationMapImage,
-  greetingImage: GalleryPhoto7,
+  greetingImage: GalleryPhotoGreeting,
+  mainImages: [G1, G2],
   galleryImages: [
     GalleryPhoto1,
     GalleryPhoto2,
@@ -49,7 +56,10 @@ const Configs: ConfigsType = {
   ],
   music: [
     { src: Music, artist: 'Calum Scott', title: 'You are the reason' },
-    { src: Music2, artist: '梁心頤(南拳媽媽) · 王威登(鐵竹堂)', title: 'Say U Love Me' }
+    { src: Music2, artist: '梁心頤(南拳媽媽) · 王威登(鐵竹堂)', title: 'Say U Love Me' },
+    { src: Music3, artist: 'Skylar Grey', title: 'Everything I need' },
+    { src: Music4, artist: 'Christina Perri', title: 'A Thousand Years' },
+    { src: Music4, artist: '王藍茵', title: '恶作剧' }
   ],
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'
 }
@@ -72,6 +82,7 @@ export type ConfigsType = {
   titleImage: string
   locationMapImage: string
   greetingImage: string
+  mainImages: string[]
   galleryImages: string[]
   music: MusicDetail[]
   backendURL: string
