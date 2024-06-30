@@ -37,7 +37,7 @@ const Image = styled('img', {
 
 const Title = styled('p', {
   color: '#795548',
-  fontFamily: 'Bad Script',
+  fontFamily: 'Great Vibes, cursive',
   fontSize: '2.5em',
   margin: '20px 0 10px 0'
 })
