@@ -51,7 +51,7 @@ const SubTitle = styled('p', {
 })
 
 const PlayerWrapper = styled('div', {
-  width: '75%',
+  width: '80%',
   maxWidth: '600px',
   marginBottom: '30px'
 })
@@ -106,6 +106,10 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
     setMusicIndex((prevIndex) => (prevIndex - 1 + config.music.length) % config.music.length)
   }
 
+  const handleEnded = () => {
+    setMusicIndex((prevIndex) => (prevIndex + 1) % config.music.length)
+  }
+
   return (
     <section
       id={id}
@@ -137,13 +141,14 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
             key={musicIndex} // Force re-render by changing key
             ref={playerRef}
             src={musicDetail.src}
-            loop
+            loop={false}
             customAdditionalControls={[]}
             autoPlayAfterSrcChange={true}
             showJumpControls={true}
             showSkipControls={true}
             onClickNext={handleClickNext}
             onClickPrevious={handleClickPrevious}
+            onEnded={handleEnded}
           />
         </PlayerWrapper>
       </Layout>
