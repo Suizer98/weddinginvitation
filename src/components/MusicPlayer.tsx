@@ -1,9 +1,14 @@
-import { styled } from '@stitches/react'
+import { keyframes, styled } from '@stitches/react'
 import React, { useEffect, useRef, useState } from 'react'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 
 import { ConfigsType, MusicDetail } from '../configs'
+
+const spin = keyframes({
+  from: { transform: 'rotate(0deg)' },
+  to: { transform: 'rotate(360deg)' }
+})
 
 const Layout = styled('div', {
   width: '100%',
@@ -18,7 +23,7 @@ const Layout = styled('div', {
 const TextContainer = styled('div', {
   width: '80%',
   textAlign: 'center',
-  marginBottom: '10px'
+  marginBottom: '20px'
 })
 
 const ImageContainer = styled('div', {
@@ -28,18 +33,23 @@ const ImageContainer = styled('div', {
 })
 
 const Image = styled('img', {
-  width: '50%',
-  maxWidth: '300px',
-  borderRadius: '10px',
+  width: '300px',
+  height: '300px',
+  borderRadius: '50%',
   boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-  marginBottom: '20px'
+  marginTop: '30px',
+  marginBottom: '20px',
+  animation: `${spin} 5s linear infinite`, // Add the spinning animation
+  animationPlayState: 'paused', // Start in paused state
+  objectFit: 'cover', // Ensure the image content fits well within the circle
+  overflow: 'hidden' // Ensure content stays within the circular boundary
 })
 
 const Title = styled('p', {
   color: '#795548',
   fontFamily: 'Great Vibes',
   fontSize: '2.5em',
-  margin: '20px 0 10px 0'
+  margin: '20px 0 20px 0'
 })
 
 const SubTitle = styled('p', {
@@ -87,6 +97,7 @@ type MusicPlayerProps = {
 const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const playerRef = useRef<AudioPlayer>(null)
+  const imageRef = useRef<HTMLImageElement>(null)
   const [musicIndex, setMusicIndex] = useState(() =>
     Math.floor(Math.random() * config.music.length)
   )
@@ -100,16 +111,60 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
     }
   }, [showDetails, musicIndex])
 
+  useEffect(() => {
+    const audioElement = playerRef.current?.audio.current
+
+    const handlePlay = () => {
+      if (imageRef.current) {
+        imageRef.current.style.animationPlayState = 'running'
+      }
+    }
+
+    const handlePause = () => {
+      if (imageRef.current) {
+        imageRef.current.style.animationPlayState = 'paused'
+      }
+    }
+
+    audioElement?.addEventListener('play', handlePlay)
+    audioElement?.addEventListener('pause', handlePause)
+    audioElement?.addEventListener('ended', handlePause)
+
+    return () => {
+      audioElement?.removeEventListener('play', handlePlay)
+      audioElement?.removeEventListener('pause', handlePause)
+      audioElement?.removeEventListener('ended', handlePause)
+    }
+  }, [])
+
   const handleClickNext = () => {
     setMusicIndex((prevIndex) => (prevIndex + 1) % config.music.length)
+    if (playerRef.current?.audio.current) {
+      playerRef.current.audio.current.pause()
+      playerRef.current.audio.current.play().catch((error) => {
+        console.error('Error playing music:', error.message)
+      })
+    }
   }
 
   const handleClickPrevious = () => {
     setMusicIndex((prevIndex) => (prevIndex - 1 + config.music.length) % config.music.length)
+    if (playerRef.current?.audio.current) {
+      playerRef.current.audio.current.pause()
+      playerRef.current.audio.current.play().catch((error) => {
+        console.error('Error playing music:', error.message)
+      })
+    }
   }
 
   const handleEnded = () => {
     setMusicIndex((prevIndex) => (prevIndex + 1) % config.music.length)
+    if (playerRef.current?.audio.current) {
+      playerRef.current.audio.current.pause()
+      playerRef.current.audio.current.play().catch((error) => {
+        console.error('Error playing music:', error.message)
+      })
+    }
   }
 
   return (
@@ -134,13 +189,12 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
           <SubTitle>Check out the playlist we’ve curated together.</SubTitle>
         </TextContainer>
         <ImageContainer>
-          <Image src={config.greetingImage} alt="Album cover" />
+          <Image src={config.greetingImage} alt="Album cover" ref={imageRef} />
         </ImageContainer>
         <SongTitle>{musicDetail.title}</SongTitle>
         <SongArtist>{musicDetail.artist}</SongArtist>
         <PlayerWrapper>
           <StyledAudioPlayer
-            key={musicIndex} // Force re-render by changing key
             ref={playerRef}
             src={musicDetail.src}
             loop={false}

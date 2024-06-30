@@ -23,7 +23,7 @@ function App() {
     setTimeout(() => {
       setButtonVisible(false)
 
-      const desiredSection = document.getElementById('music-section')
+      const desiredSection = document.getElementById('greeting-section')
       if (desiredSection) {
         const start = window.scrollY
         const end = desiredSection.offsetTop
@@ -62,8 +62,8 @@ function App() {
       <TitleLayout config={Configs} showDetails={showDetails} />
       {showDetails && (
         <>
-          <MusicPlayer id="music-section" config={Configs} showDetails={showDetails} />
           <Greeting id="greeting-section" config={Configs} />
+          <MusicPlayer id="music-section" config={Configs} showDetails={showDetails} />
           <Introduction config={Configs} />
           <Gallery config={Configs} />
           <Location config={Configs} />
