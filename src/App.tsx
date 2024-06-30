@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Fill from './components/Fill'
 import Gallery from './components/Gallery'
 import Greeting from './components/Greeting'
+import Introduction from './components/Introduction'
 import Location from './components/Location'
 import MusicPlayer from './components/MusicPlayer'
 import Share from './components/Share'
@@ -63,6 +64,7 @@ function App() {
         <>
           <MusicPlayer id="music-section" config={Configs} showDetails={showDetails} />
           <Greeting id="greeting-section" config={Configs} />
+          <Introduction config={Configs} />
           <Gallery config={Configs} />
           <Location config={Configs} />
           <Fill config={Configs} />
