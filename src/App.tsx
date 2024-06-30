@@ -7,7 +7,6 @@ import Greeting from './components/Greeting'
 import Location from './components/Location'
 import Share from './components/Share'
 import TitleLayout from './components/Title'
-// import CongratulatoryMoney from './components/CongratulatoryMoney';
 import Configs from './configs'
 
 const { Footer } = Layout
@@ -86,7 +85,6 @@ function App() {
           <Greeting id="greeting-section" config={Configs} />
           <Gallery config={Configs} />
           <Location config={Configs} />
-          {/* <CongratulatoryMoney config={Configs} /> */}
           <Fill config={Configs} />
           <Share config={Configs} />
         </>
