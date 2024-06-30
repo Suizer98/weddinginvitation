@@ -45,8 +45,14 @@ const Configs: ConfigsType = {
     GalleryPhoto5,
     GalleryPhoto6
   ],
-  music: Music,
+  music: [{ src: Music, artist: 'Calum Scott', title: 'You are the reason' }],
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'
+}
+
+export type MusicDetail = {
+  src: string
+  artist: string
+  title: string
 }
 
 export type ConfigsType = {
@@ -62,7 +68,7 @@ export type ConfigsType = {
   locationMapImage: string
   greetingImage: string
   galleryImages: string[]
-  music: string
+  music: MusicDetail[]
   backendURL: string
 }
 

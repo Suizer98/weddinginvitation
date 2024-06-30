@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 
-import { ConfigsType } from '../configs'
+import { ConfigsType, MusicDetail } from '../configs'
 
 const Layout = styled('div', {
   width: '100%',
@@ -12,7 +12,7 @@ const Layout = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '5% 0',
-  backgroundColor: '#FCE4E3'
+  backgroundColor: '#EDEBDD'
 })
 
 const TextContainer = styled('div', {
@@ -37,7 +37,7 @@ const Image = styled('img', {
 
 const Title = styled('p', {
   color: '#795548',
-  fontFamily: 'Great Vibes, cursive',
+  fontFamily: 'Bad Script',
   fontSize: '2.5em',
   margin: '20px 0 10px 0'
 })
@@ -45,7 +45,7 @@ const Title = styled('p', {
 const SubTitle = styled('p', {
   color: '#795548',
   fontFamily: 'Bad Script',
-  fontSize: '1.5em',
+  fontSize: '1.8em',
   margin: '10px 0',
   lineHeight: 1.8
 })
@@ -57,15 +57,15 @@ const PlayerWrapper = styled('div', {
 })
 
 const StyledAudioPlayer = styled(AudioPlayer, {
-  backgroundColor: '#FFE4E1',
+  //   backgroundColor: '#EDEBDD',
   borderRadius: '10px',
   boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
 })
 
 const SongTitle = styled('p', {
   color: '#795548',
-  fontFamily: 'Great Vibes, cursive',
-  fontSize: '1.5em',
+  fontFamily: 'Bad Script',
+  fontSize: '2em',
   margin: '10px 0 5px 0',
   textAlign: 'center'
 })
@@ -73,7 +73,7 @@ const SongTitle = styled('p', {
 const SongArtist = styled('p', {
   color: '#795548',
   fontFamily: 'Bad Script',
-  fontSize: '1.2em',
+  fontSize: '1.5em',
   margin: '5px 0',
   textAlign: 'center'
 })
@@ -87,6 +87,7 @@ type MusicPlayerProps = {
 const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const playerRef = useRef<AudioPlayer>(null)
+  const musicDetail: MusicDetail = config.music[0] // Assuming you want to use the first music detail
 
   useEffect(() => {
     if (showDetails && playerRef.current && playerRef.current.audio.current) {
@@ -102,7 +103,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
       ref={ref}
       style={{
         height: '100vh',
-        backgroundColor: '#FCE4E3',
+        backgroundColor: '#EDEBDD',
         overflow: 'hidden',
         position: 'relative',
         transition: 'background 1s ease-in',
@@ -120,12 +121,12 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
         <ImageContainer>
           <Image src={config.greetingImage} alt="Album cover" />
         </ImageContainer>
-        <SongTitle>Everything - The Black Skirt</SongTitle>
-        <SongArtist>The Black Skirt - Our Wedding Song</SongArtist>
+        <SongTitle>{musicDetail.title}</SongTitle>
+        <SongArtist>{musicDetail.artist}</SongArtist>
         <PlayerWrapper>
           <StyledAudioPlayer
             ref={playerRef}
-            src={config.music}
+            src={musicDetail.src}
             loop
             customAdditionalControls={[]}
             autoPlayAfterSrcChange={false}
