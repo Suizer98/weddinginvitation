@@ -63,6 +63,8 @@ const MapWrapper = styled('div', {
   marginTop: '20px'
 })
 
+const center = olProj.fromLonLat([103.74600638294491, 1.5493705212948794])
+
 type LocationProps = {
   config: ConfigsType
 }
@@ -94,7 +96,7 @@ const Location = ({ config }: LocationProps) => {
           })
         ],
         view: new View({
-          center: olProj.fromLonLat([103.74600638294491, 1.5493705212948794]),
+          center: center,
           zoom: 15
         }),
         controls: defaults().extend([
@@ -108,8 +110,9 @@ const Location = ({ config }: LocationProps) => {
               button.style.right = '10px'
               button.addEventListener('click', () => {
                 const view = map.getView()
-                view.setCenter(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
+                view.setCenter(center)
                 view.setZoom(15)
+                popup.setPosition(center)
               })
               return button
             })()
@@ -119,7 +122,7 @@ const Location = ({ config }: LocationProps) => {
 
       // Add Marker with a bigger point
       const marker = new Feature({
-        geometry: new Point(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
+        geometry: new Point(center)
       })
 
       // Define the style for the marker
@@ -150,7 +153,7 @@ const Location = ({ config }: LocationProps) => {
       })
 
       map.addOverlay(popup)
-      popup.setPosition(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
+      popup.setPosition(center)
 
       // Show Popup when clicking on the marker
       map.on('click', (event) => {
@@ -161,7 +164,7 @@ const Location = ({ config }: LocationProps) => {
           popup.setPosition(undefined)
           copyToClipboard(config.weddingAddress)
         } else {
-          popup.setPosition(olProj.fromLonLat([103.74600638294491, 1.5493705212948794]))
+          popup.setPosition(center)
         }
       })
 
