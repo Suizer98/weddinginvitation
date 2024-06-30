@@ -47,7 +47,7 @@ const SubTitle = styled('p', {
   color: '#795548',
   width: '100%',
   fontFamily: 'Bad Script',
-  fontSize: isPortrait ? '1.4em' : '2em',
+  fontSize: isPortrait ? '1.29em' : '2em',
   margin: '24px 0',
   fontWeight: '300',
   lineHeight: 1.8
