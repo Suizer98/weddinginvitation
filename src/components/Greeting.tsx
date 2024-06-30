@@ -18,28 +18,28 @@ const TextContainer = styled('div', {
   width: isPortrait ? '100%' : '60%'
 })
 
-const ImageContainer = styled('div', {
-  width: '40%',
-  display: isPortrait ? 'none' : 'block',
-  textAlign: 'right',
-  paddingRight: '5%',
-  opacity: 0.8
-})
+// const ImageContainer = styled('div', {
+//   width: '40%',
+//   display: isPortrait ? 'none' : 'block',
+//   textAlign: 'right',
+//   paddingRight: '5%',
+//   opacity: 0.8
+// })
 
-const Image = styled('img', {
-  width: '80%',
-  borderRadius: '30%',
-  boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-})
+// const Image = styled('img', {
+//   width: '80%',
+//   borderRadius: '30%',
+//   boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+// })
 
-const BubbleImage = styled('img', {
-  position: 'absolute',
-  width: '35%',
-  height: 'auto',
-  bottom: '5%',
-  borderRadius: '30%',
-  opacity: 0.8
-})
+// const BubbleImage = styled('img', {
+//   position: 'absolute',
+//   width: '35%',
+//   height: 'auto',
+//   bottom: '5%',
+//   borderRadius: '30%',
+//   opacity: 0.8
+// })
 
 const RedSpan = styled('span', {
   color: '#FF69B4' // Light Pink
@@ -125,12 +125,12 @@ const Greeting = ({ id, config }: GreetingProps) => {
             <br />
           </SubTitle>
         </TextContainer>
-        {!isPortrait && (
+        {/* {!isPortrait && (
           <ImageContainer>
             <Image src={config.greetingImage} alt="Romantic decoration" />
           </ImageContainer>
         )}
-        {isPortrait && <BubbleImage src={config.greetingImage} alt="Light floating bubble" />}
+        {isPortrait && <BubbleImage src={config.greetingImage} alt="Light floating bubble" />} */}
       </Layout>
     </section>
   )

@@ -1,5 +1,5 @@
 import { Button, Layout } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import Fill from './components/Fill'
 import Gallery from './components/Gallery'
@@ -22,7 +22,7 @@ function App() {
     setTimeout(() => {
       setButtonVisible(false)
 
-      const desiredSection = document.getElementById('greeting-section')
+      const desiredSection = document.getElementById('music-section')
       if (desiredSection) {
         const start = window.scrollY
         const end = desiredSection.offsetTop
