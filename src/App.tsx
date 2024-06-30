@@ -5,6 +5,7 @@ import Fill from './components/Fill'
 import Gallery from './components/Gallery'
 import Greeting from './components/Greeting'
 import Location from './components/Location'
+import MusicPlayer from './components/MusicPlayer'
 import Share from './components/Share'
 import TitleLayout from './components/Title'
 import Configs from './configs'
@@ -15,38 +16,16 @@ function App() {
   const [showDetails, setShowDetails] = useState(false)
   const [buttonVisible, setButtonVisible] = useState(true)
 
-  useEffect(() => {
-    // Start playing music when showDetails becomes true
-    if (showDetails) {
-      const audio = new Audio(Configs.music)
-      audio.loop = true
-
-      // Play the audio
-      audio.play().catch((error) => {
-        // Handle errors, e.g., autoplay is prevented
-        console.error('Error playing music:', error.message)
-      })
-
-      // Cleanup function
-      return () => {
-        audio.pause()
-        audio.currentTime = 0
-      }
-    }
-  }, [showDetails])
-
   const handleShowDetails = () => {
     setShowDetails(true)
 
-    // Set a timer to hide the button after a delay (e.g., 500ms)
     setTimeout(() => {
       setButtonVisible(false)
 
-      // Scroll to the Greeting section
-      const greetingSection = document.getElementById('greeting-section')
-      if (greetingSection) {
+      const desiredSection = document.getElementById('greeting-section')
+      if (desiredSection) {
         const start = window.scrollY
-        const end = greetingSection.offsetTop
+        const end = desiredSection.offsetTop
         const distance = end - start
         const duration = 1000
         const startTime = performance.now()
@@ -82,6 +61,7 @@ function App() {
       <TitleLayout config={Configs} showDetails={showDetails} />
       {showDetails && (
         <>
+          <MusicPlayer id="music-section" config={Configs} showDetails={showDetails} />
           <Greeting id="greeting-section" config={Configs} />
           <Gallery config={Configs} />
           <Location config={Configs} />
