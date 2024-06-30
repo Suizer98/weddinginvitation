@@ -2,13 +2,13 @@ import { Button, Layout } from 'antd'
 import React, { useState } from 'react'
 
 import Fill from './components/Fill'
+import First from './components/First'
 import Gallery from './components/Gallery'
 import Greeting from './components/Greeting'
 import Introduction from './components/Introduction'
 import Location from './components/Location'
 import MusicPlayer from './components/MusicPlayer'
 import Share from './components/Share'
-import TitleLayout from './components/Title'
 import Configs from './configs'
 
 const { Footer } = Layout
@@ -59,7 +59,7 @@ function App() {
 
   return (
     <main style={{ height: '100%' }}>
-      <TitleLayout config={Configs} showDetails={showDetails} />
+      <First config={Configs} showDetails={showDetails} />
       {showDetails && (
         <>
           <Greeting id="greeting-section" config={Configs} />

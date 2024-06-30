@@ -1,11 +1,12 @@
 import { styled } from '@stitches/react'
+import React, { useRef } from 'react'
 
 import { ConfigsType } from '../configs'
+import useOnScreen from '../hooks/useOnScreen'
 
 const Container = styled('div', {
   width: '100%',
   minHeight: '100vh',
-  backgroundColor: '#EFF4E2',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -69,10 +70,18 @@ type IntroductionProps = {
 }
 
 const Introduction = ({ config }: IntroductionProps) => {
+  const ref = useRef(null)
+  const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
   const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
   return (
-    <Container>
+    <Container
+      ref={ref}
+      style={{
+        backgroundColor: onScreen ? '#F6F6ED' : '#DADADA',
+        transition: 'background 1s ease-in'
+      }}
+    >
       <TitleContainer>
         <Title>Introducing you</Title>
       </TitleContainer>

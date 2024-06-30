@@ -52,12 +52,12 @@ const SubTitleLayout = styled('p', {
   fontFamily: 'Great Vibes, cursive'
 })
 
-type TitleProps = {
+type FirstProps = {
   config: ConfigsType
   showDetails: boolean
 }
 
-const Title = ({ config, showDetails }: TitleProps) => {
+const First = ({ config, showDetails }: FirstProps) => {
   const { width, height } = useWindowSize()
   const [extraConfetti, setExtraConfetti] = useState(false)
 
@@ -105,4 +105,4 @@ const Title = ({ config, showDetails }: TitleProps) => {
   )
 }
 
-export default Title
+export default First
