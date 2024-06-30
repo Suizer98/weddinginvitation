@@ -74,11 +74,11 @@ const Introduction = ({ config }: IntroductionProps) => {
   return (
     <Container>
       <TitleContainer>
-        <Title>Hey There!</Title>
+        <Title>Introducing you</Title>
       </TitleContainer>
       <ProfileContainer style={{ flexDirection: isPortrait ? 'column' : 'row' }}>
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
-          <SubTitle>Introducing The Groom...</SubTitle>
+          <SubTitle>The Groom...</SubTitle>
           <Image
             src={config.galleryImages[0]}
             alt="Groom"

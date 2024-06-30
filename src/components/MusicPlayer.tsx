@@ -37,7 +37,7 @@ const Image = styled('img', {
 
 const Title = styled('p', {
   color: '#795548',
-  fontFamily: 'Great Vibes, cursive',
+  fontFamily: 'Great Vibes',
   fontSize: '2.5em',
   margin: '20px 0 10px 0'
 })
@@ -51,7 +51,7 @@ const SubTitle = styled('p', {
 })
 
 const PlayerWrapper = styled('div', {
-  width: '80%',
+  width: '85%',
   maxWidth: '600px',
   marginBottom: '30px'
 })
