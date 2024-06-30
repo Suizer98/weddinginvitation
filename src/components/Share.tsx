@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { LinkOutlined } from '@ant-design/icons'
 import { styled } from '@stitches/react'
 import { Button, message } from 'antd'
@@ -6,42 +5,54 @@ import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { ConfigsType } from '../configs'
 
-const isPortrait = window.matchMedia('(orientation: portrait)').matches
-
 const Section = styled('section', {
   background: '#EFEBE9',
   overflow: 'hidden',
   position: 'relative',
-  height: '60vh'
+  height: '60vh',
+  '@media (max-width: 768px)': {
+    height: 'auto',
+    paddingBottom: '20px'
+  }
 })
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '15% 0% 10% 0%' : '5% 0% 5% 0%',
+  padding: '5% 0%',
   paddingTop: '50px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  textAlign: 'center'
+  textAlign: 'center',
+  '@media (max-width: 768px)': {
+    padding: '10% 0%'
+  }
 })
 
 const Title = styled('p', {
   color: '#795548',
   width: '100%',
-  fontSize: isPortrait ? '2.5em' : '3.5em',
+  fontSize: '3.5em',
   fontFamily: 'Great Vibes, cursive',
   margin: 0,
-  fontWeight: '500'
+  fontWeight: '500',
+  '@media (max-width: 768px)': {
+    fontSize: '2.5em'
+  }
 })
 
 const ButtonGroup = styled('div', {
   width: '100%',
   textAlign: 'center',
-  paddingBottom: isPortrait ? '10%' : '5%',
+  paddingBottom: '5%',
   display: 'flex',
   justifyContent: 'center',
-  gap: '16px'
+  gap: '16px',
+  flexWrap: 'wrap',
+  '@media (max-width: 768px)': {
+    paddingBottom: '20%'
+  }
 })
 
 const commonButtonStyles = {
@@ -51,7 +62,11 @@ const commonButtonStyles = {
   alignItems: 'center',
   justifyContent: 'center',
   height: 'auto',
-  padding: '8px 16px'
+  padding: '8px 16px',
+  '@media (max-width: 768px)': {
+    fontSize: '16px',
+    padding: '6px 12px'
+  }
 }
 
 const LinkShareButton = styled(Button, {
