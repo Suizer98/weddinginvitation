@@ -10,7 +10,8 @@ const Container = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '2rem'
+  padding: '2rem',
+  overflowX: 'hidden'
 })
 
 const TitleContainer = styled('div', {
@@ -68,20 +69,30 @@ type IntroductionProps = {
 }
 
 const Introduction = ({ config }: IntroductionProps) => {
+  const isPortrait = window.matchMedia('(orientation: portrait)').matches
+
   return (
     <Container>
       <TitleContainer>
         <Title>Hey There!</Title>
       </TitleContainer>
-      <ProfileContainer>
-        <Profile>
+      <ProfileContainer style={{ flexDirection: isPortrait ? 'column' : 'row' }}>
+        <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
           <SubTitle>Introducing The Groom...</SubTitle>
-          <Image src={config.galleryImages[0]} alt="Groom" />
+          <Image
+            src={config.galleryImages[0]}
+            alt="Groom"
+            style={{ width: isPortrait ? '150px' : '250px' }}
+          />
           <Name>{config.groom.name}</Name>
         </Profile>
-        <Profile>
+        <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
           <SubTitle>And The Bride</SubTitle>
-          <Image src={config.galleryImages[1]} alt="Bride" />
+          <Image
+            src={config.galleryImages[1]}
+            alt="Bride"
+            style={{ width: isPortrait ? '150px' : '250px' }}
+          />
           <Name>{config.bride.name}</Name>
         </Profile>
       </ProfileContainer>
