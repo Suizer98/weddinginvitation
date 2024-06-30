@@ -2,16 +2,9 @@
 import { LinkOutlined } from '@ant-design/icons'
 import { styled } from '@stitches/react'
 import { Button, message } from 'antd'
-import { useEffect, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { ConfigsType } from '../configs'
-
-declare global {
-  interface Window {
-    Kakao: any
-  }
-}
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches
 
@@ -45,14 +38,27 @@ const Title = styled('p', {
 const ButtonGroup = styled('div', {
   width: '100%',
   textAlign: 'center',
-  paddingBottom: isPortrait ? '10%' : '5%'
+  paddingBottom: isPortrait ? '10%' : '5%',
+  display: 'flex',
+  justifyContent: 'center',
+  gap: '16px'
 })
 
+const commonButtonStyles = {
+  fontFamily: 'Bad Script',
+  fontSize: 20,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: 'auto',
+  padding: '8px 16px'
+}
+
 const LinkShareButton = styled(Button, {
+  ...commonButtonStyles,
   background: '#53acee',
   borderColor: '#53acee',
   color: '#ffffff',
-  fontFamily: 'Bad Script',
   '&:hover': {
     backgroundColor: '#9fcbed !important',
     borderColor: '#9fcbed !important',
@@ -62,17 +68,16 @@ const LinkShareButton = styled(Button, {
     backgroundColor: '#9fcbed !important',
     borderColor: '#9fcbed !important',
     color: '#ffffff !important'
-  },
-  fontSize: 20
+  }
 })
 
 const EmailButton = styled(Button, {
-  background: '#007bff', // Email button color
+  ...commonButtonStyles,
+  background: '#007bff',
   borderColor: '#007bff',
   color: '#ffffff',
-  fontFamily: 'Bad Script',
   '&:hover': {
-    backgroundColor: '#128C7E !important', // Darker shade on hover
+    backgroundColor: '#128C7E !important',
     borderColor: '#128C7E !important',
     color: '#ffffff !important'
   },
@@ -80,8 +85,24 @@ const EmailButton = styled(Button, {
     backgroundColor: '#128C7E !important',
     borderColor: '#128C7E !important',
     color: '#ffffff !important'
+  }
+})
+
+const WhatsAppButton = styled(Button, {
+  ...commonButtonStyles,
+  background: '#25D366',
+  borderColor: '#25D366',
+  color: '#ffffff',
+  '&:hover': {
+    backgroundColor: '#1DA855 !important',
+    borderColor: '#1DA855 !important',
+    color: '#ffffff !important'
   },
-  fontSize: 20
+  '&:focus': {
+    backgroundColor: '#1DA855 !important',
+    borderColor: '#1DA855 !important',
+    color: '#ffffff !important'
+  }
 })
 
 type ShareProps = {
@@ -89,31 +110,32 @@ type ShareProps = {
 }
 
 const Share = ({ config }: ShareProps) => {
-  const [shareCount, setShareCount] = useState<number>(0)
-
-  if (!window.Kakao.isInitialized()) {
-    window.Kakao.init(config.kakaoToken)
-  }
-
-  useEffect(() => {
-    if (shareCount !== 0) {
-      const mailtoLink = `mailto:teysuizer1998@gmail.com`
-      window.open(mailtoLink, '_blank')
-    }
-  }, [shareCount])
-
   return (
     <Section>
       <Layout>
-        <Title>Share and contact us about this joyful event!</Title>
+        <Title>Share & contact us!</Title>
       </Layout>
       <ButtonGroup>
+        <WhatsAppButton
+          style={{ margin: 8 }}
+          size="large"
+          icon={
+            <img
+              src={config.kakaoImage}
+              alt="WhatsApp Icon"
+              style={{ width: 20, height: 20, verticalAlign: 'middle', marginRight: 8 }}
+            />
+          }
+          onClick={() => window.open('https://wa.link/fnq7ti', '_blank')}
+        >
+          Contact via WhatsApp
+        </WhatsAppButton>
         <EmailButton
           style={{ margin: 8 }}
           size="large"
-          onClick={() => setShareCount(shareCount + 1)}
+          onClick={() => window.open(`mailto:teysuizer1998@gmail.com`, '_blank')}
         >
-          Contact us through Email
+          Contact through Email
         </EmailButton>
         <CopyToClipboard text={config.url}>
           <LinkShareButton
