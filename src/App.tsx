@@ -83,8 +83,8 @@ function App() {
             <div>
               <Button
                 style={{
-                  background: '#B7A586',
-                  borderColor: '#B7A586',
+                  background: '#FFFFFF',
+                  borderColor: '#FFFFFF',
                   color: '#795548',
                   opacity: showDetails ? 0 : 1,
                   padding: '0px 30px',

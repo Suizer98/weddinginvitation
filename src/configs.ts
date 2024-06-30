@@ -45,7 +45,10 @@ const Configs: ConfigsType = {
     GalleryPhoto5,
     GalleryPhoto6
   ],
-  music: [{ src: Music, artist: 'Calum Scott', title: 'You are the reason' }],
+  music: [
+    { src: Music, artist: 'Calum Scott', title: 'You are the reason' },
+    { src: Music, artist: '梁心頤(南拳媽媽) · 王威登(鐵竹堂)', title: 'Say U Love Me' }
+  ],
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'
 }
 
