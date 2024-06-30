@@ -17,19 +17,30 @@ const Layout = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   padding: '5% 5%',
-  backgroundColor: '#EDEBDD'
+  backgroundColor: '#EDEBDD',
+  '@media (max-width: 768px)': {
+    padding: '3% 3%'
+  }
 })
 
 const TextContainer = styled('div', {
   width: '80%',
   textAlign: 'center',
-  marginBottom: '20px'
+  marginBottom: '20px',
+  '@media (max-width: 768px)': {
+    width: '90%',
+    marginBottom: '10px'
+  }
 })
 
 const ImageContainer = styled('div', {
   width: '80%',
   textAlign: 'center',
-  marginBottom: '20px'
+  marginBottom: '20px',
+  '@media (max-width: 768px)': {
+    width: '90%',
+    marginBottom: '10px'
+  }
 })
 
 const Image = styled('img', {
@@ -42,14 +53,22 @@ const Image = styled('img', {
   animation: `${spin} 5s linear infinite`, // Add the spinning animation
   animationPlayState: 'paused', // Start in paused state
   objectFit: 'cover', // Ensure the image content fits well within the circle
-  overflow: 'hidden' // Ensure content stays within the circular boundary
+  overflow: 'hidden', // Ensure content stays within the circular boundary
+  '@media (max-width: 768px)': {
+    width: '200px',
+    height: '200px'
+  }
 })
 
 const Title = styled('p', {
   color: '#795548',
   fontFamily: 'Great Vibes',
   fontSize: '2.5em',
-  margin: '20px 0 20px 0'
+  margin: '20px 0 20px 0',
+  '@media (max-width: 768px)': {
+    fontSize: '2em',
+    margin: '10px 0'
+  }
 })
 
 const SubTitle = styled('p', {
@@ -57,17 +76,24 @@ const SubTitle = styled('p', {
   fontFamily: 'Bad Script',
   fontSize: '1.8em',
   margin: '10px 0',
-  lineHeight: 1.8
+  lineHeight: 1.8,
+  '@media (max-width: 768px)': {
+    fontSize: '1.5em',
+    margin: '5px 0'
+  }
 })
 
 const PlayerWrapper = styled('div', {
   width: '85%',
   maxWidth: '600px',
-  marginBottom: '30px'
+  marginBottom: '30px',
+  '@media (max-width: 768px)': {
+    width: '90%',
+    marginBottom: '20px'
+  }
 })
 
 const StyledAudioPlayer = styled(AudioPlayer, {
-  //   backgroundColor: '#EDEBDD',
   borderRadius: '10px',
   boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
 })
@@ -77,7 +103,11 @@ const SongTitle = styled('p', {
   fontFamily: 'Bad Script',
   fontSize: '2em',
   margin: '10px 0 5px 0',
-  textAlign: 'center'
+  textAlign: 'center',
+  '@media (max-width: 768px)': {
+    fontSize: '1.5em',
+    margin: '5px 0'
+  }
 })
 
 const SongArtist = styled('p', {
@@ -85,7 +115,11 @@ const SongArtist = styled('p', {
   fontFamily: 'Bad Script',
   fontSize: '1.5em',
   margin: '5px 0',
-  textAlign: 'center'
+  textAlign: 'center',
+  '@media (max-width: 768px)': {
+    fontSize: '1.2em',
+    margin: '3px 0'
+  }
 })
 
 type MusicPlayerProps = {
