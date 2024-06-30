@@ -71,7 +71,7 @@ const Introduction = ({ config }: IntroductionProps) => {
   return (
     <Container>
       <TitleContainer>
-        <Title>Hey There</Title>
+        <Title>Hey There!</Title>
       </TitleContainer>
       <ProfileContainer>
         <Profile>

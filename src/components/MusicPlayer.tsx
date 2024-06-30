@@ -1,5 +1,5 @@
 import { styled } from '@stitches/react'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 
@@ -87,7 +87,8 @@ type MusicPlayerProps = {
 const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const playerRef = useRef<AudioPlayer>(null)
-  const musicDetail: MusicDetail = config.music[0] // Assuming you want to use the first music detail
+  const [musicIndex, setMusicIndex] = useState(0)
+  const musicDetail: MusicDetail = config.music[musicIndex]
 
   useEffect(() => {
     if (showDetails && playerRef.current && playerRef.current.audio.current) {
@@ -95,7 +96,15 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
         console.error('Error playing music:', error.message)
       })
     }
-  }, [showDetails])
+  }, [showDetails, musicIndex])
+
+  const handleClickNext = () => {
+    setMusicIndex((prevIndex) => (prevIndex + 1) % config.music.length)
+  }
+
+  const handleClickPrevious = () => {
+    setMusicIndex((prevIndex) => (prevIndex - 1 + config.music.length) % config.music.length)
+  }
 
   return (
     <section
@@ -125,12 +134,16 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
         <SongArtist>{musicDetail.artist}</SongArtist>
         <PlayerWrapper>
           <StyledAudioPlayer
+            key={musicIndex} // Force re-render by changing key
             ref={playerRef}
             src={musicDetail.src}
             loop
             customAdditionalControls={[]}
-            autoPlayAfterSrcChange={false}
-            showJumpControls={false}
+            autoPlayAfterSrcChange={true}
+            showJumpControls={true}
+            showSkipControls={true}
+            onClickNext={handleClickNext}
+            onClickPrevious={handleClickPrevious}
           />
         </PlayerWrapper>
       </Layout>

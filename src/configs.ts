@@ -1,5 +1,7 @@
 import LocationMapImage from './resources/LocationMap.png'
 // @ts-ignore
+import Music2 from './resources/music2.mp3'
+// @ts-ignore
 import Music from './resources/music.mp3'
 // @ts-ignore
 import GalleryPhoto1 from './resources/photo1.jpg'
@@ -47,7 +49,7 @@ const Configs: ConfigsType = {
   ],
   music: [
     { src: Music, artist: 'Calum Scott', title: 'You are the reason' },
-    { src: Music, artist: '梁心頤(南拳媽媽) · 王威登(鐵竹堂)', title: 'Say U Love Me' }
+    { src: Music2, artist: '梁心頤(南拳媽媽) · 王威登(鐵竹堂)', title: 'Say U Love Me' }
   ],
   backendURL: 'https://weddingbackend-ba3z.onrender.com/users'
 }
