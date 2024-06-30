@@ -11,7 +11,7 @@ const Layout = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '5% 0',
+  padding: '5% 5%',
   backgroundColor: '#EDEBDD'
 })
 
@@ -51,9 +51,9 @@ const SubTitle = styled('p', {
 })
 
 const PlayerWrapper = styled('div', {
-  width: '80%',
+  width: '75%',
   maxWidth: '600px',
-  marginBottom: '20px'
+  marginBottom: '30px'
 })
 
 const StyledAudioPlayer = styled(AudioPlayer, {

@@ -68,7 +68,7 @@ const Greeting = ({ id, config }: GreetingProps) => {
       ref={ref}
       style={{
         height: '100vh',
-        background: onScreen ? '#F9F9EA' : '#DADADA',
+        background: onScreen ? '#F6F6ED' : '#DADADA',
         overflow: 'hidden',
         position: 'relative',
         transition: 'background 1s ease-in'

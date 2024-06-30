@@ -19,7 +19,7 @@ const Layout = styled('div', {
 })
 
 const Title = styled('p', {
-  color: '#FFFFFF',
+  color: '#795548',
   width: '100%',
   fontSize: isPortrait ? '2em' : '2.5em',
   fontWeight: '500',
@@ -42,7 +42,7 @@ const Gallery = ({ config }: GalleryProps) => {
   const [arrowStates, setArrowStates] = useState([
     { size: 32, color: '#795548' },
     { size: 44, color: '#DADADA' },
-    { size: 56, color: '#e3b7a6' }
+    { size: 56, color: '#FFFFFF' }
   ])
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Gallery = ({ config }: GalleryProps) => {
       ref={ref}
       style={{
         height: '100vh',
-        background: onScreen ? '#212121' : '#EFEBE9',
+        background: onScreen ? '#D8BDA8' : '#EFEBE9',
         transition: 'background 1s ease-in'
       }}
     >
