@@ -30,7 +30,7 @@ const BackgroundImage = styled('div', {
 const Layout = styled('div', {
   color: '#5D4037',
   textAlign: 'center',
-  animation: 'fadein 2.5s',
+  animation: 'fadein 1.5s',
   background: 'rgba(255, 255, 255, 0.7)',
   padding: '1em 2em',
   borderRadius: '8px',
