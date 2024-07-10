@@ -1,6 +1,7 @@
 import { LinkOutlined } from '@ant-design/icons'
 import { styled } from '@stitches/react'
-import { Button, message } from 'antd'
+import { Button, Modal, message } from 'antd'
+import React, { useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
 import { ConfigsType } from '../configs'
@@ -125,24 +126,23 @@ type ShareProps = {
 }
 
 const Share = ({ config }: ShareProps) => {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const showModal = () => {
+    setIsModalVisible(true)
+  }
+
+  const handleCancel = () => {
+    setIsModalVisible(false)
+  }
+
   return (
     <Section>
       <Layout>
         <Title>Share & contact us!</Title>
       </Layout>
       <ButtonGroup>
-        <WhatsAppButton
-          style={{ margin: 8 }}
-          size="large"
-          icon={
-            <img
-              src={config.kakaoImage}
-              alt="WhatsApp Icon"
-              style={{ width: 20, height: 20, verticalAlign: 'middle', marginRight: 8 }}
-            />
-          }
-          onClick={() => window.open('https://wa.link/fnq7ti', '_blank')}
-        >
+        <WhatsAppButton style={{ margin: 8 }} size="large" onClick={showModal}>
           Contact via WhatsApp
         </WhatsAppButton>
         <EmailButton
@@ -163,6 +163,45 @@ const Share = ({ config }: ShareProps) => {
           </LinkShareButton>
         </CopyToClipboard>
       </ButtonGroup>
+
+      <Modal
+        title={
+          <div style={{ textAlign: 'center', fontFamily: 'Bad Script', fontSize: 15 }}>
+            Contact via WhatsApp
+          </div>
+        }
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Button
+          style={{
+            width: '50%',
+            marginBottom: 8,
+            fontFamily: 'Bad Script',
+            backgroundColor: '#6EC5E9',
+            borderColor: '#6EC5E9',
+            color: '#ffffff',
+            fontSize: 15
+          }}
+          onClick={() => window.open('https://wa.link/fnq7ti', '_blank')}
+        >
+          Contact Groom
+        </Button>
+        <Button
+          style={{
+            width: '50%',
+            fontFamily: 'Bad Script',
+            backgroundColor: '#FF69B4',
+            borderColor: '#FF69B4',
+            color: '#ffffff',
+            fontSize: 15
+          }}
+          onClick={() => window.open('https://wa.link/mabe0w', '_blank')}
+        >
+          Contact Bride
+        </Button>
+      </Modal>
     </Section>
   )
 }
