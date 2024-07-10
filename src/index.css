@@ -42,3 +42,7 @@ body,
     opacity: 1;
   }
 }
+
+.ant-message {
+  font-family: 'Bad Script', cursive;
+}

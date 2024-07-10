@@ -108,6 +108,8 @@ const Location = ({ config }: LocationProps) => {
               button.style.position = 'absolute'
               button.style.top = '10px'
               button.style.right = '10px'
+              button.style.fontFamily = 'Bad Script'
+              // button.style.fontSize = '20'
               button.addEventListener('click', () => {
                 const view = map.getView()
                 view.setCenter(center)
@@ -201,7 +203,7 @@ const Location = ({ config }: LocationProps) => {
             border: '1px solid rgba(0, 0, 0, 0.2)'
           }}
         >
-          <p>We are here!</p>
+          <p style={{ fontFamily: 'Bad Script', fontSize: 20 }}>We are here!</p>
         </div>
       </Layout>
     </Section>
