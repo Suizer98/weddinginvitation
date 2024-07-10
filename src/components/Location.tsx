@@ -114,6 +114,7 @@ const Location = ({ config }: LocationProps) => {
                 const view = map.getView()
                 view.setCenter(center)
                 view.setZoom(15)
+                view.setRotation(0)
                 popup.setPosition(center)
               })
               return button
