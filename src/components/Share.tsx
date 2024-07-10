@@ -142,7 +142,18 @@ const Share = ({ config }: ShareProps) => {
         <Title>Share & contact us!</Title>
       </Layout>
       <ButtonGroup>
-        <WhatsAppButton style={{ margin: 8 }} size="large" onClick={showModal}>
+        <WhatsAppButton
+          style={{ margin: 8 }}
+          size="large"
+          onClick={showModal}
+          icon={
+            <img
+              src={config.kakaoImage}
+              alt="WhatsApp Icon"
+              style={{ width: 20, height: 20, verticalAlign: 'middle', marginRight: 8 }}
+            />
+          }
+        >
           Contact via WhatsApp
         </WhatsAppButton>
         <EmailButton
