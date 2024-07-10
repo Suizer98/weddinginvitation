@@ -12,11 +12,13 @@ const spin = keyframes({
 
 const Layout = styled('div', {
   width: '100%',
-  height: '100vh',
+  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'center',
   padding: '5% 5%',
+  overflow: 'hidden',
   backgroundColor: '#EDEBDD',
   '@media (max-width: 768px)': {
     padding: '3% 3%'
@@ -48,8 +50,8 @@ const Image = styled('img', {
   height: '300px',
   borderRadius: '50%',
   boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-  marginTop: '30px',
-  marginBottom: '20px',
+  marginTop: '10px',
+  marginBottom: '10px',
   animation: `${spin} 5s linear infinite`, // Add the spinning animation
   animationPlayState: 'paused', // Start in paused state
   objectFit: 'cover', // Ensure the image content fits well within the circle
@@ -64,7 +66,7 @@ const Title = styled('p', {
   color: '#795548',
   fontFamily: 'Great Vibes',
   fontSize: '2.5em',
-  margin: '20px 0 20px 0',
+  margin: '50px 0 10px 0',
   '@media (max-width: 768px)': {
     fontSize: '2em',
     margin: '10px 0'
@@ -102,7 +104,7 @@ const SongTitle = styled('p', {
   color: '#795548',
   fontFamily: 'Bad Script',
   fontSize: '2em',
-  margin: '10px 0 10px 0',
+  margin: '5px 0 5px 0',
   textAlign: 'center',
   '@media (max-width: 768px)': {
     fontSize: '1.5em',
@@ -114,7 +116,7 @@ const SongArtist = styled('p', {
   color: '#795548',
   fontFamily: 'Bad Script',
   fontSize: '1.5em',
-  margin: '10px 0 10px 0',
+  margin: '5px 0 5px 0',
   textAlign: 'center',
   '@media (max-width: 768px)': {
     fontSize: '1.2em',
