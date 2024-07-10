@@ -231,6 +231,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
         <SongArtist>{musicDetail.artist}</SongArtist>
         <PlayerWrapper>
           <StyledAudioPlayer
+            style={{ fontFamily: 'Bad Script' }}
             ref={playerRef}
             src={musicDetail.src}
             loop={false}
