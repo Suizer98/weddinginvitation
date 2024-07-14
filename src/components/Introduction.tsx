@@ -87,17 +87,6 @@ const Introduction = ({ config }: IntroductionProps) => {
       </TitleContainer>
       <ProfileContainer style={{ flexDirection: isPortrait ? 'column' : 'row' }}>
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
-          <SubTitle>The Groom</SubTitle>
-          <Image
-            src={config.mainImages[1]}
-            alt="Groom"
-            style={{ width: isPortrait ? '150px' : '250px' }}
-          />
-          <Name>
-            {config.groom.name} {config.groom.mandarin}
-          </Name>
-        </Profile>
-        <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
           <SubTitle>And The Bride</SubTitle>
           <Image
             src={config.mainImages[0]}
@@ -106,6 +95,17 @@ const Introduction = ({ config }: IntroductionProps) => {
           />
           <Name>
             {config.bride.name} {config.bride.mandarin}
+          </Name>
+        </Profile>
+        <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
+          <SubTitle>The Groom</SubTitle>
+          <Image
+            src={config.mainImages[1]}
+            alt="Groom"
+            style={{ width: isPortrait ? '150px' : '250px' }}
+          />
+          <Name>
+            {config.groom.name} {config.groom.mandarin}
           </Name>
         </Profile>
       </ProfileContainer>
