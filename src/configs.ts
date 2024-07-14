@@ -1,5 +1,8 @@
 import LocationMapImage from './resources/LocationMap.png'
 // @ts-ignore
+import GalleryPhotoGreeting from './resources/cover.jpg'
+import TitleImage from './resources/cover.jpg'
+// @ts-ignore
 import Music2 from './resources/music2.mp3'
 // @ts-ignore
 import Music3 from './resources/music3.mp3'
@@ -9,18 +12,26 @@ import Music4 from './resources/music4.mp3'
 import Music5 from './resources/music5.mp3'
 // @ts-ignore
 import Music from './resources/music.mp3'
-import GalleryPhoto1 from './resources/photo1.jpg'
-import GalleryPhoto2 from './resources/photo2.jpg'
-import GalleryPhoto3 from './resources/photo3.jpg'
-import GalleryPhoto4 from './resources/photo4.jpg'
-import GalleryPhoto5 from './resources/photo5.jpg'
-import GalleryPhoto6 from './resources/photo6.jpg'
-import G1 from './resources/photo8.jpg'
-import G2 from './resources/photo9.jpg'
-// @ts-ignore
-import GalleryPhotoGreeting from './resources/photoGreeting.jpg'
-import TitleImage from './resources/ring.jpg'
 import WS from './resources/ws.png'
+
+// Utility function to import all images from a directory
+const importAll = (requireContext: any) => requireContext.keys().map(requireContext)
+
+// Automatically load all images from the ./resources directory
+const musicPlayerImages: string[] = importAll(
+  // @ts-ignore
+  require.context('./resources/musicplayerphotos', false, /\.(png|jpe?g|svg)$/)
+)
+
+const galleryImages: string[] = importAll(
+  // @ts-ignore
+  require.context('./resources/galleryphotos', false, /\.(png|jpe?g|svg)$/)
+)
+
+const introduceImages: string[] = importAll(
+  // @ts-ignore
+  require.context('./resources/couple', false, /\.(png|jpe?g|svg)$/)
+)
 
 const Configs: ConfigsType = {
   url: 'http://localhost:3000',
@@ -50,15 +61,9 @@ const Configs: ConfigsType = {
   titleImage: TitleImage,
   locationMapImage: LocationMapImage,
   greetingImage: GalleryPhotoGreeting,
-  mainImages: [G1, G2],
-  galleryImages: [
-    GalleryPhoto1,
-    GalleryPhoto2,
-    GalleryPhoto3,
-    GalleryPhoto4,
-    GalleryPhoto5,
-    GalleryPhoto6
-  ],
+  mainImages: introduceImages,
+  galleryImages: galleryImages,
+  musicPlayerImages: musicPlayerImages,
   music: [
     { src: Music, artist: 'Calum Scott', title: 'You are the reason' },
     { src: Music2, artist: '梁心頤(南拳媽媽) · 王威登(鐵竹堂)', title: 'Say U Love Me' },
@@ -89,6 +94,7 @@ export type ConfigsType = {
   greetingImage: string
   mainImages: string[]
   galleryImages: string[]
+  musicPlayerImages: string[]
   music: MusicDetail[]
   backendURL: string
 }

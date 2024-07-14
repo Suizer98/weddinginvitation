@@ -109,7 +109,7 @@ const Gallery = ({ config }: GalleryProps) => {
             </Image.PreviewGroup>
           </Row>
         )}
-        <div
+        {/* <div
           style={{
             marginTop: isPortrait ? '20px' : '120px',
             display: 'flex',
@@ -141,7 +141,7 @@ const Gallery = ({ config }: GalleryProps) => {
               margin: '5px 0'
             }}
           />
-        </div>
+        </div> */}
       </Layout>
     </section>
   )

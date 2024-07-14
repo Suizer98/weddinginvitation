@@ -22,7 +22,7 @@ const BackgroundImage = styled('div', {
   width: '100%',
   height: '100%',
   backgroundSize: 'cover',
-  backgroundPosition: 'center 75%',
+  backgroundPosition: 'center 15%',
   // filter: 'blur(8px)',
   zIndex: 0
 })

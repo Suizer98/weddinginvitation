@@ -137,6 +137,9 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
   const [musicIndex, setMusicIndex] = useState(() =>
     Math.floor(Math.random() * config.music.length)
   )
+  const [imageIndex, setImageIndex] = useState(() =>
+    Math.floor(Math.random() * config.musicPlayerImages.length)
+  )
   const musicDetail: MusicDetail = config.music[musicIndex]
 
   useEffect(() => {
@@ -175,6 +178,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
 
   const handleClickNext = () => {
     setMusicIndex((prevIndex) => (prevIndex + 1) % config.music.length)
+    setImageIndex(() => Math.floor(Math.random() * config.musicPlayerImages.length))
     if (playerRef.current?.audio.current) {
       playerRef.current.audio.current.pause()
       playerRef.current.audio.current.play().catch((error) => {
@@ -185,6 +189,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
 
   const handleClickPrevious = () => {
     setMusicIndex((prevIndex) => (prevIndex - 1 + config.music.length) % config.music.length)
+    setImageIndex(() => Math.floor(Math.random() * config.musicPlayerImages.length))
     if (playerRef.current?.audio.current) {
       playerRef.current.audio.current.pause()
       playerRef.current.audio.current.play().catch((error) => {
@@ -195,6 +200,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
 
   const handleEnded = () => {
     setMusicIndex((prevIndex) => (prevIndex + 1) % config.music.length)
+    setImageIndex(() => Math.floor(Math.random() * config.musicPlayerImages.length))
     if (playerRef.current?.audio.current) {
       playerRef.current.audio.current.pause()
       playerRef.current.audio.current.play().catch((error) => {
@@ -225,7 +231,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
           <SubTitle>Check out the playlist we’ve curated together.</SubTitle>
         </TextContainer>
         <ImageContainer>
-          <Image src={config.greetingImage} alt="Album cover" ref={imageRef} />
+          <Image src={config.musicPlayerImages[imageIndex]} alt="Album cover" ref={imageRef} />
         </ImageContainer>
         <SongTitle>{musicDetail.title}</SongTitle>
         <SongArtist>{musicDetail.artist}</SongArtist>
