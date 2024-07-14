@@ -24,7 +24,7 @@ const BackgroundImage = styled('div', {
   width: '100%',
   height: '100%',
   backgroundSize: 'cover',
-  backgroundPosition: isPortrait ? 'center right' : 'center 15%',
+  backgroundPosition: isPortrait ? 'center left 72%' : 'center 15%',
   // filter: 'blur(8px)',
   zIndex: 0
 })
