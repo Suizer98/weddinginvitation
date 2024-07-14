@@ -72,30 +72,26 @@ const Gallery = ({ config }: GalleryProps) => {
     >
       <Layout>
         <Title>Our Precious Moments...</Title>
-        {isPortrait && (
-          <Carousel
-            autoplay={true}
-            effect="fade"
-            arrows={true}
-            draggable={true}
-            slidesToShow={1}
-            centerMode={true}
-            speed={300}
-          >
-            {config.galleryImages.map((image, index) => (
-              <div key={index} onClick={() => {}}>
-                <LazyLoad height={200} offset={100}>
-                  <Image
-                    src={image}
-                    width={isPortrait ? width * 0.7 : width * 0.2}
-                    preview={true}
-                  />
-                </LazyLoad>
-              </div>
-            ))}
-          </Carousel>
-        )}
-        {!isPortrait && (
+        {/* {isPortrait && ( */}
+        <Carousel
+          autoplay={true}
+          effect="fade"
+          arrows={true}
+          draggable={true}
+          slidesToShow={1}
+          centerMode={true}
+          speed={300}
+        >
+          {config.galleryImages.map((image, index) => (
+            <div key={index} onClick={() => {}}>
+              <LazyLoad height={200} offset={100}>
+                <Image src={image} width={isPortrait ? width * 0.7 : width * 0.2} preview={true} />
+              </LazyLoad>
+            </div>
+          ))}
+        </Carousel>
+        {/* )} */}
+        {/* {!isPortrait && (
           <Row gutter={[16, 16]}>
             <Image.PreviewGroup
               preview={{
@@ -117,7 +113,7 @@ const Gallery = ({ config }: GalleryProps) => {
               ))}
             </Image.PreviewGroup>
           </Row>
-        )}
+        )} */}
       </Layout>
     </section>
   )

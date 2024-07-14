@@ -5,6 +5,8 @@ import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
 
+const isPortrait = window.matchMedia('(orientation: portrait)').matches
+
 const Section = styled('section', {
   height: '100vh', // Ensure the section takes the full viewport height
   background: '#DADADA',
@@ -22,7 +24,7 @@ const BackgroundImage = styled('div', {
   width: '100%',
   height: '100%',
   backgroundSize: 'cover',
-  backgroundPosition: 'center 15%',
+  backgroundPosition: isPortrait ? 'center right' : 'center 15%',
   // filter: 'blur(8px)',
   zIndex: 0
 })

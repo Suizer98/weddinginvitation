@@ -89,7 +89,7 @@ const Introduction = ({ config }: IntroductionProps) => {
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
           <SubTitle>The Groom</SubTitle>
           <Image
-            src={config.mainImages[0]}
+            src={config.mainImages[1]}
             alt="Groom"
             style={{ width: isPortrait ? '150px' : '250px' }}
           />
@@ -100,7 +100,7 @@ const Introduction = ({ config }: IntroductionProps) => {
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
           <SubTitle>And The Bride</SubTitle>
           <Image
-            src={config.mainImages[1]}
+            src={config.mainImages[0]}
             alt="Bride"
             style={{ width: isPortrait ? '150px' : '250px' }}
           />
