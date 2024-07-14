@@ -1,5 +1,6 @@
 import { styled } from '@stitches/react'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import Resizer from 'react-image-file-resizer'
 
 import { ConfigsType } from '../configs'
 import useOnScreen from '../hooks/useOnScreen'
@@ -73,6 +74,37 @@ const Introduction = ({ config }: IntroductionProps) => {
   const ref = useRef(null)
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
   const isPortrait = window.matchMedia('(orientation: portrait)').matches
+  const [resizedBrideImage, setResizedBrideImage] = useState<string | null>(null)
+  const [resizedGroomImage, setResizedGroomImage] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchImageAsBlob = async (imageUrl: string) => {
+      const response = await fetch(imageUrl)
+      const blob = await response.blob()
+      return blob
+    }
+
+    const resizeImage = (
+      imageBlob: Blob,
+      setImage: React.Dispatch<React.SetStateAction<string | null>>
+    ) => {
+      Resizer.imageFileResizer(
+        imageBlob,
+        800, // max width
+        600, // max height
+        'JPEG', // format
+        70, // quality
+        0, // rotation
+        (uri) => {
+          setImage(uri as string)
+        },
+        'base64'
+      )
+    }
+
+    fetchImageAsBlob(config.mainImages[0]).then((blob) => resizeImage(blob, setResizedBrideImage))
+    fetchImageAsBlob(config.mainImages[1]).then((blob) => resizeImage(blob, setResizedGroomImage))
+  }, [config.mainImages])
 
   return (
     <Container
@@ -87,9 +119,9 @@ const Introduction = ({ config }: IntroductionProps) => {
       </TitleContainer>
       <ProfileContainer style={{ flexDirection: isPortrait ? 'column' : 'row' }}>
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
-          <SubTitle>And The Bride</SubTitle>
+          <SubTitle>The Bride</SubTitle>
           <Image
-            src={config.mainImages[0]}
+            src={resizedBrideImage || config.mainImages[0]}
             alt="Bride"
             style={{ width: isPortrait ? '150px' : '250px' }}
           />
@@ -98,9 +130,9 @@ const Introduction = ({ config }: IntroductionProps) => {
           </Name>
         </Profile>
         <Profile style={{ margin: isPortrait ? '1rem 0' : '0 2rem' }}>
-          <SubTitle>The Groom</SubTitle>
+          <SubTitle>And The Groom</SubTitle>
           <Image
-            src={config.mainImages[1]}
+            src={resizedGroomImage || config.mainImages[1]}
             alt="Groom"
             style={{ width: isPortrait ? '150px' : '250px' }}
           />

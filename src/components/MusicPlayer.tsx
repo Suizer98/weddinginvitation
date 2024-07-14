@@ -2,6 +2,7 @@ import { keyframes, styled } from '@stitches/react'
 import React, { useEffect, useRef, useState } from 'react'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
+import Resizer from 'react-image-file-resizer'
 
 import { ConfigsType, MusicDetail } from '../configs'
 
@@ -140,6 +141,7 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
   const [imageIndex, setImageIndex] = useState(() =>
     Math.floor(Math.random() * config.musicPlayerImages.length)
   )
+  const [resizedImage, setResizedImage] = useState<string | null>(null)
   const musicDetail: MusicDetail = config.music[musicIndex]
 
   useEffect(() => {
@@ -149,6 +151,31 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
       })
     }
   }, [showDetails, musicIndex])
+
+  useEffect(() => {
+    const fetchImageAsBlob = async (imageUrl: string) => {
+      const response = await fetch(imageUrl)
+      const blob = await response.blob()
+      return blob
+    }
+
+    const resizeImage = (imageBlob: Blob) => {
+      Resizer.imageFileResizer(
+        imageBlob,
+        600, // max width
+        600, // max height
+        'JPEG', // format
+        70, // quality
+        0, // rotation
+        (uri) => {
+          setResizedImage(uri as string)
+        },
+        'base64'
+      )
+    }
+
+    fetchImageAsBlob(config.musicPlayerImages[imageIndex]).then(resizeImage)
+  }, [config.musicPlayerImages, imageIndex])
 
   useEffect(() => {
     const audioElement = playerRef.current?.audio.current
@@ -231,7 +258,11 @@ const MusicPlayer = ({ id, config, showDetails }: MusicPlayerProps) => {
           <SubTitle>Check out the playlist we’ve curated together.</SubTitle>
         </TextContainer>
         <ImageContainer>
-          <Image src={config.musicPlayerImages[imageIndex]} alt="Album cover" ref={imageRef} />
+          <Image
+            src={resizedImage || config.musicPlayerImages[imageIndex]}
+            alt="Album cover"
+            ref={imageRef}
+          />
         </ImageContainer>
         <SongTitle>{musicDetail.title}</SongTitle>
         <SongArtist>{musicDetail.artist}</SongArtist>

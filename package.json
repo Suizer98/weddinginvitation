@@ -28,6 +28,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.9.1",
+    "react-image-file-resizer": "^0.4.8",
     "react-lazyload": "^3.2.1",
     "react-scripts": "^5.0.1",
     "react-use": "^17.4.0",

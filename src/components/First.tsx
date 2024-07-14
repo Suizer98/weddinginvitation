@@ -1,6 +1,7 @@
 import { styled } from '@stitches/react'
 import React, { useEffect, useState } from 'react'
 import Confetti from 'react-confetti'
+import Resizer from 'react-image-file-resizer'
 import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
@@ -62,6 +63,7 @@ type FirstProps = {
 const First = ({ config, showDetails }: FirstProps) => {
   const { width, height } = useWindowSize()
   const [extraConfetti, setExtraConfetti] = useState(false)
+  const [resizedImage, setResizedImage] = useState<string | null>(null)
 
   useEffect(() => {
     if (showDetails) {
@@ -69,6 +71,31 @@ const First = ({ config, showDetails }: FirstProps) => {
       setTimeout(() => setExtraConfetti(false), 5000)
     }
   }, [showDetails])
+
+  useEffect(() => {
+    const fetchImageAsBlob = async (imageUrl: string) => {
+      const response = await fetch(imageUrl)
+      const blob = await response.blob()
+      return blob
+    }
+
+    const resizeImage = (imageBlob: Blob) => {
+      Resizer.imageFileResizer(
+        imageBlob,
+        1600, // max width
+        1200, // max height
+        'JPEG', // format
+        100, // quality
+        0, // rotation
+        (uri) => {
+          setResizedImage(uri as string)
+        },
+        'base64'
+      )
+    }
+
+    fetchImageAsBlob(config.titleImage).then(resizeImage)
+  }, [config.titleImage])
 
   return (
     <>
@@ -87,7 +114,7 @@ const First = ({ config, showDetails }: FirstProps) => {
         <Confetti
           width={width}
           height={height}
-          numberOfPieces={350}
+          numberOfPieces={200}
           initialVelocityX={{ min: -50, max: 50 }}
           initialVelocityY={{ min: -50, max: 50 }}
           recycle={false}
@@ -95,7 +122,7 @@ const First = ({ config, showDetails }: FirstProps) => {
         />
       )}
       <Section>
-        <BackgroundImage style={{ backgroundImage: `url(${config.titleImage})` }} />
+        <BackgroundImage style={{ backgroundImage: `url(${resizedImage || config.titleImage})` }} />
         <Layout>
           <SubTitleLayout>Wedding Invitation</SubTitleLayout>
           <TitleLayout>
