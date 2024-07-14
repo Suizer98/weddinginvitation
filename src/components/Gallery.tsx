@@ -1,7 +1,8 @@
-import { DownOutlined } from '@ant-design/icons'
+// import { DownOutlined } from '@ant-design/icons'
 import { styled } from '@stitches/react'
 import { Carousel, Col, Image, Row } from 'antd'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import LazyLoad from 'react-lazyload'
 import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
@@ -39,26 +40,26 @@ const Gallery = ({ config }: GalleryProps) => {
   const [previewVisible, setPreviewVisible] = useState<boolean>(false)
   const [previewIndex] = useState<number>(0)
 
-  const [arrowStates, setArrowStates] = useState([
-    { size: 32, color: '#795548' },
-    { size: 44, color: '#DADADA' },
-    { size: 56, color: '#FFFFFF' }
-  ])
+  // const [arrowStates, setArrowStates] = useState([
+  //   { size: 32, color: '#795548' },
+  //   { size: 44, color: '#DADADA' },
+  //   { size: 56, color: '#FFFFFF' }
+  // ])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setArrowStates((prevStates) => {
-        const newStates = [
-          prevStates[2],
-          { size: prevStates[0].size, color: prevStates[0].color },
-          { size: prevStates[1].size, color: prevStates[1].color }
-        ]
-        return newStates
-      })
-    }, 1000)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setArrowStates((prevStates) => {
+  //       const newStates = [
+  //         prevStates[2],
+  //         { size: prevStates[0].size, color: prevStates[0].color },
+  //         { size: prevStates[1].size, color: prevStates[1].color }
+  //       ]
+  //       return newStates
+  //     })
+  //   }, 1000)
 
-    return () => clearInterval(interval)
-  }, [])
+  //   return () => clearInterval(interval)
+  // }, [])
 
   return (
     <section
@@ -83,7 +84,13 @@ const Gallery = ({ config }: GalleryProps) => {
           >
             {config.galleryImages.map((image, index) => (
               <div key={index} onClick={() => {}}>
-                <Image src={image} width={isPortrait ? width * 0.7 : width * 0.2} preview={true} />
+                <LazyLoad height={200} offset={100}>
+                  <Image
+                    src={image}
+                    width={isPortrait ? width * 0.7 : width * 0.2}
+                    preview={true}
+                  />
+                </LazyLoad>
               </div>
             ))}
           </Carousel>
@@ -99,49 +106,18 @@ const Gallery = ({ config }: GalleryProps) => {
             >
               {config.galleryImages.map((image, index) => (
                 <Col key={index} span={isPortrait ? 6 : 3}>
-                  <Image
-                    key={index}
-                    src={image}
-                    width={isPortrait ? width / 4 - 10 : width / 8 - 10}
-                  />
+                  <LazyLoad height={200} offset={100}>
+                    <Image
+                      key={index}
+                      src={image}
+                      width={isPortrait ? width / 4 - 10 : width / 8 - 10}
+                    />
+                  </LazyLoad>
                 </Col>
               ))}
             </Image.PreviewGroup>
           </Row>
         )}
-        {/* <div
-          style={{
-            marginTop: isPortrait ? '20px' : '120px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}
-        >
-          <DownOutlined
-            className="blinking-arrow-1"
-            style={{
-              fontSize: `${arrowStates[0].size}px`,
-              color: arrowStates[0].color,
-              margin: '5px 0'
-            }}
-          />
-          <DownOutlined
-            className="blinking-arrow-2"
-            style={{
-              fontSize: `${arrowStates[1].size}px`,
-              color: arrowStates[1].color,
-              margin: '5px 0'
-            }}
-          />
-          <DownOutlined
-            className="blinking-arrow-3"
-            style={{
-              fontSize: `${arrowStates[2].size}px`,
-              color: arrowStates[2].color,
-              margin: '5px 0'
-            }}
-          />
-        </div> */}
       </Layout>
     </section>
   )
