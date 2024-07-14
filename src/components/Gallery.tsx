@@ -1,7 +1,7 @@
 // import { DownOutlined } from '@ant-design/icons'
 import { styled } from '@stitches/react'
-import { Carousel, Col, Image, Row } from 'antd'
-import { useRef, useState } from 'react'
+import { Carousel, Image } from 'antd'
+import { useRef } from 'react'
 import LazyLoad from 'react-lazyload'
 import { useWindowSize } from 'react-use'
 
@@ -37,8 +37,8 @@ const Gallery = ({ config }: GalleryProps) => {
   const ref = useRef<HTMLSelectElement>(null)
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
 
-  const [previewVisible, setPreviewVisible] = useState<boolean>(false)
-  const [previewIndex] = useState<number>(0)
+  // const [previewVisible, setPreviewVisible] = useState<boolean>(false)
+  // const [previewIndex] = useState<number>(0)
 
   // const [arrowStates, setArrowStates] = useState([
   //   { size: 32, color: '#795548' },
