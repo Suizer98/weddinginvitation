@@ -40,27 +40,6 @@ const Gallery = ({ config }: GalleryProps) => {
   const [previewVisible, setPreviewVisible] = useState<boolean>(false)
   const [previewIndex] = useState<number>(0)
 
-  // const [arrowStates, setArrowStates] = useState([
-  //   { size: 32, color: '#795548' },
-  //   { size: 44, color: '#DADADA' },
-  //   { size: 56, color: '#FFFFFF' }
-  // ])
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setArrowStates((prevStates) => {
-  //       const newStates = [
-  //         prevStates[2],
-  //         { size: prevStates[0].size, color: prevStates[0].color },
-  //         { size: prevStates[1].size, color: prevStates[1].color }
-  //       ]
-  //       return newStates
-  //     })
-  //   }, 1000)
-
-  //   return () => clearInterval(interval)
-  // }, [])
-
   return (
     <section
       ref={ref}
