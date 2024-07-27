@@ -1,8 +1,8 @@
-// import { DownOutlined } from '@ant-design/icons'
 import { styled } from '@stitches/react'
 import { Carousel, Col, Image, Row } from 'antd'
 import { useRef, useState } from 'react'
-import LazyLoad from 'react-lazyload'
+import { Blurhash } from 'react-blurhash'
+// import LazyLoad from 'react-lazyload'
 import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
@@ -33,7 +33,6 @@ type GalleryProps = {
 
 const Gallery = ({ config }: GalleryProps) => {
   const { width } = useWindowSize()
-
   const ref = useRef<HTMLSelectElement>(null)
   const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px')
 
@@ -63,13 +62,9 @@ const Gallery = ({ config }: GalleryProps) => {
           >
             {config.galleryImages.map((image, index) => (
               <div key={index} onClick={() => {}}>
-                <LazyLoad height={200} offset={100}>
-                  <Image
-                    src={image}
-                    width={isPortrait ? width * 0.7 : width * 0.2}
-                    preview={true}
-                  />
-                </LazyLoad>
+                {/* <LazyLoad height={200} offset={100}> */}
+                <ImageWithBlurhash src={image} width={isPortrait ? width * 0.7 : width * 0.2} />
+                {/* </LazyLoad> */}
               </div>
             ))}
           </Carousel>
@@ -85,13 +80,12 @@ const Gallery = ({ config }: GalleryProps) => {
             >
               {config.galleryImages.map((image, index) => (
                 <Col key={index} span={isPortrait ? 6 : 3}>
-                  <LazyLoad height={200} offset={100}>
-                    <Image
-                      key={index}
-                      src={image}
-                      width={isPortrait ? width / 4 - 10 : width / 8 - 10}
-                    />
-                  </LazyLoad>
+                  {/* <LazyLoad height={200} offset={100}> */}
+                  <ImageWithBlurhash
+                    src={image}
+                    width={isPortrait ? width / 4 - 10 : width / 8 - 10}
+                  />
+                  {/* </LazyLoad> */}
                 </Col>
               ))}
             </Image.PreviewGroup>
@@ -99,6 +93,34 @@ const Gallery = ({ config }: GalleryProps) => {
         )}
       </Layout>
     </section>
+  )
+}
+
+type ImageWithBlurhashProps = {
+  src: string
+  width: number
+}
+
+const ImageWithBlurhash = ({ src, width }: ImageWithBlurhashProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false)
+
+  return (
+    <div style={{ position: 'relative', width: '100%' }}>
+      {!imageLoaded && (
+        <Blurhash
+          hash="L03l5OWBofayofayj[ayayj[ayj["
+          width="100%"
+          style={{ position: 'absolute', top: 0, left: 0 }}
+        />
+      )}
+      <Image
+        src={src}
+        width={width}
+        style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
+        onLoad={() => setImageLoaded(true)}
+        preview={false}
+      />
+    </div>
   )
 }
 
