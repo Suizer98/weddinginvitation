@@ -118,7 +118,7 @@ const ImageWithBlurhash = ({ src, width }: ImageWithBlurhashProps) => {
         width={width}
         style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
         onLoad={() => setImageLoaded(true)}
-        preview={false}
+        preview={true}
       />
     </div>
   )
