@@ -2,7 +2,7 @@ import { styled } from '@stitches/react'
 import { Carousel, Col, Image, Row } from 'antd'
 import { useRef, useState } from 'react'
 import { Blurhash } from 'react-blurhash'
-// import LazyLoad from 'react-lazyload'
+import LazyLoad from 'react-lazyload'
 import { useWindowSize } from 'react-use'
 
 import { ConfigsType } from '../configs'
@@ -80,12 +80,14 @@ const Gallery = ({ config }: GalleryProps) => {
             >
               {config.galleryImages.map((image, index) => (
                 <Col key={index} span={isPortrait ? 6 : 3}>
-                  {/* <LazyLoad height={200} offset={100}> */}
-                  <ImageWithBlurhash
-                    src={image}
-                    width={isPortrait ? width / 4 - 10 : width / 8 - 10}
-                  />
-                  {/* </LazyLoad> */}
+                  <LazyLoad height={200} offset={200} once>
+                    <Image
+                      key={index}
+                      src={image}
+                      width={isPortrait ? width / 4 - 10 : width / 8 - 10}
+                      placeholder={<div style={{ backgroundColor: '#f0f0f0', height: 200 }} />}
+                    />
+                  </LazyLoad>
                 </Col>
               ))}
             </Image.PreviewGroup>
