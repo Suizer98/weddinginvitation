@@ -50,7 +50,7 @@ const FormContainer = styled(Form, {
 })
 
 const FormItem = styled(Form.Item, {
-  width: '100%',
+  width: '80%',
   marginBottom: '16px',
   fontFamily: 'Bad Script',
   fontWeight: 'bold',
@@ -138,7 +138,7 @@ const Fill = ({ config }: FillProps) => {
           <FormItem label="Name" name="name">
             <Input />
           </FormItem>
-          <FormItem label="Number of Pax" name="numberOfPax">
+          <FormItem label="Pax" name="numberOfPax">
             <Input />
           </FormItem>
           <FormItem label="Vegeterian" name="allergic">
